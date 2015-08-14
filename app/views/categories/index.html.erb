@@ -1,0 +1,5 @@
+<% @categories.each do |f| %>
+	<%= f.category_name %>
+	<%= link_to "詳しく", "/category/#{f.id}" %>
+	<br>
+<% end %> 

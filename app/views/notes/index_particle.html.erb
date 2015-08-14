@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "inside/index2" %>
+<div class="particle_main">
+<% @notes.each_with_index do |note ,i|%>
+  <% if i <= 7 %>
+  	<div class="note<%= i %>">
+  		<%= link_to (note) do %>
+		    <h2 class="particle_title"><%= note.title %></h2>
+		<% end %>
+	</div>
+    <style>
+    	div.note<%= i %>{
+    		background-color: <%= note.color %>;
+    	}
+    </style>
+	
+  <% end %>
+<% end %>
+</div>
+<%= link_to "ホーム" , "/top" %>
+<%= link_to "新規登録" , "/new" %>

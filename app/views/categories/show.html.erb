@@ -1,0 +1,10 @@
+<%= @category.category_name %>
+<br>
+<% @notes.each do |note| %>
+	<%= link_to (note) do %>
+	<%= note.title %>
+	<br>
+	<% end %>
+<% end %>
+
+<%= link_to '削除', category_destroy_path(id: @category.id) ,:method => :delete %>

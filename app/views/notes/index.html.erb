@@ -1,0 +1,136 @@
+  <%= stylesheet_link_tag "inside/index" , media: "all" ,"data-turbolinks-track" => true %>
+<div class="container">
+<div class="row">
+<div id="box" class="col-md-4 col-height">
+    <div id="note1">
+      <% if @note1 = "現在のノートはありません" %>
+        <h2><%= @note1 %></h2>
+      <% else %>
+        <%= link_to (@note1) do %>
+              <h2>現在のノート</h2>
+              <h3><%= @note1.title %></h3>
+              <h3><%= @note1.content %></h3>
+          <% end %>
+      <% end %>
+    </div>
+</div>
+
+<div id="box" class="col-md-4 col-height">
+    <div id="note2">
+      <% if @note2 %>
+        <%= link_to (@note2) do %>
+              <h2>現在のノート</h2>
+              <h3><%= @note2.title %></h3>
+              <h3><%= @note2.content %></h3>
+          <% end %>
+      <% else %>
+        <h2>ノートがありません</h2>
+        <% end %>
+    </div>
+</div>
+
+<div id="box" class="col-md-4 col-height">
+    <div id="note3">
+      <% if @note3 %>
+        <%= link_to (@note3) do %>
+              <h2>現在のノート</h2>
+              <h3><%= @note3.title %></h3>
+              <h3><%= @note3.content %></h3>
+          <% end %>
+      <% else %>
+        <h2>ノートがありません</h2>
+        <% end %>
+    </div>
+</div>
+
+<div id="box2" class="col-md-4">
+  <div id="time_box">
+    <h2>現在の時刻</h2>
+    <h3 id="now_date"></h3>
+    <h3 id="time"></h3>
+  </div>
+</div>
+<% if @categories %>
+  <% @categories.each_with_index do |category,i| %>
+    <div id="box2" class="col-md-2 col-height">
+      <div id="category<%= i %>">
+        <% note = category.notes.order("importance DESC").first %>
+        <% if note %>
+          <%= link_to ("category/#{category.id}") do %>
+            <h2><%= category.category_name %></h2>
+            <h3><%= note.title %></h3>
+            <h3><%= note.content %></h3>
+          <% end %>
+        <% else %>
+          <h3><%= category.category_name %>にノートがありません！</h3>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div id="box" class="col-md-4">
+    <div id="no_category">
+      <h3>カテゴリーがありません！</h3>
+    </div>
+  </div>
+<% end %>
+
+<div id="box2" class="col-md-2">
+  <div id="profile_box">
+  <%= link_to (current_user) do %>
+    <h3>プロフィール</h3>
+  <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="category_box">
+    <%= link_to (categories_path) do %>
+      <h3>カテゴリー一覧</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="category_new_box">
+    <%= link_to (category_path) do %>
+      <h3>カテゴリー追加</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="new_note_box">
+    <%= link_to ("/new") do %>
+      <h3>新規登録</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="index_importance_box">
+    <%= link_to (index_importance_path) do %>
+      <h3>重要度で並び替え</h3>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+  function set2fig(num) {
+     var ret;
+     if( num < 10 ) { ret = "0" + num; }
+     else { ret = num; }
+     return ret;
+  }
+
+  function showClock2() {
+     var nowTime = new Date();
+     var nowYear = set2fig( nowTime.getFullYear() );
+     var nowMonth = set2fig( nowTime.getMonth() +1);
+     var nowDay = set2fig( nowTime.getDate() );
+     var nowHour = set2fig( nowTime.getHours() );
+     var nowMin = set2fig( nowTime.getMinutes() );
+     var time = nowHour + ":" + nowMin;
+     var date = nowYear + "/" + nowMonth + "/" + nowDay;
+     document.getElementById("time").innerHTML = time;
+     document.getElementById("now_date").innerHTML = date;
+  }
+  setInterval('showClock2()',1000);
+</script>

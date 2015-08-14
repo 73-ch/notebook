@@ -1,0 +1,21 @@
+<h1>アカウント編集</h1>
+
+<%= form_for(@user) do |f| %>
+  名前
+  <br>
+  <%= f.text_field :name %>
+  <br>
+  メールアドレス
+  <br>
+  <%= f.text_field :email %>
+  <br>
+  パスワード
+  <br>
+  <%= f.password_field :password %>
+  <br>
+  確認
+  <br>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <input type="submit" value="変更">
+<% end %>

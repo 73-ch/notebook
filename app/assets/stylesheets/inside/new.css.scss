@@ -1,0 +1,23 @@
+button, textarea, select {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	background: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#form{
+	background-color: #90948A;
+	width: 50%;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#content{
+	background-color: white; 
+	padding: 10px;
+}

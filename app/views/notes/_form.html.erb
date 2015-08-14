@@ -1,0 +1,16 @@
+タイトル
+<br>
+
+<%= form.text_field :title %>
+<br>
+内容
+<br>
+<%= form.textarea(content,:content) %>
+<!-- <textarea name="content"><%= @note.content %></textarea> -->
+<br>
+重要度
+<br>
+
+<input type="range" name="importance" min="1"　max="100" value="<%= @note.importance %>">
+<br>
+<input type="reset"　value="リセット">
