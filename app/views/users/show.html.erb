@@ -9,7 +9,7 @@
     <h4><%= link_to 'カテゴリー一覧', categories_path %></h4>
     <h3>ノート数</h3>
     <h4><%= @notes.count %></h4>
-    <h4><%= link_to 'ノート一覧', index_path%></h4>
+    <h4><%= link_to 'ノート一覧', index_all_path%></h4>
 </div>
 
 <% if current_user?(@user) %>

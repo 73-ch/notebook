@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title><%= content_for?(:title) ? yield(:title) : "Project" %></title>
     <%= csrf_meta_tags %>
 
@@ -40,13 +40,35 @@
   <body>
   <header>
     <nav id="mainNav">
-    <ul id="nav">
+    <ul id="nav" class="dropmenu">
       <% if signed_in? %>
       <li><%= link_to "ホーム" , "/index" %></li>
-      <li><%= link_to 'プロフィール', current_user %></li>
-      <li><%= link_to 'ログアウト', signout_path, method: :delete %></li>
-      <li><%= link_to "新規投稿" ,"/new" %></li>
-      <li><%= link_to 'カテゴリー', categories_path %></li>
+      <li><%= link_to "アカウント", "#"%>
+        <ul>
+        <li><%= link_to 'プロフィール', current_user %></li>
+        <li><%= link_to 'ログアウト', signout_path, method: :delete %></li>
+        </ul>
+      </li>
+      <li><%= link_to "メッセージの追加", "/new_message" %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "予定を送る", "/new_message" %></li>
+          <li class="dropmenu_li"><%= link_to "スケジュールを送る", "/new_date_message" %></li>
+          <li class="dropmenu_li"><%= link_to "メモを送る", "/new_memo_message" %></li>
+        </ul>
+      </li>
+      <li><%= link_to "ノートの追加" ,"/new" %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "予定の追加" ,"/new" %></li>
+          <li class="dropmenu_li"><%= link_to "スケジュールの追加" ,"/new_date" %></li>
+          <li class="dropmenu_li"><%= link_to "メモの追加" ,"/new_memo" %></li>
+        </ul>
+      </li>
+      <li><%= link_to 'カテゴリー', categories_path %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "カテゴリーの追加", "/category"%></li>
+          <li class="dropmenu_li"><%= link_to "カテゴリー一覧", "/categories"%></li>
+        </ul>
+      </li>
       <% else %>
       <li><%= link_to 'ホーム' , '/top' %></li>
       <li><%= link_to 'ログイン', signin_path %></li>

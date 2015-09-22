@@ -1,0 +1,8 @@
+<% @follows.each do |follow| %>
+	<%= follow.user_id %> =>　<%= follow.followed_id %>
+	<br>
+<% end %>
+<% @followeds.each do |followed| %>
+	<%= followed.user_id %> =>　<%= followed.followed_id %>
+	<br>
+<% end %>

@@ -1,0 +1,9 @@
+<% @notes.each do |message| %>
+	<%= link_to "/message/#{message.id}" do %>
+		<%= message.title %>
+		<br>
+		<%= message.content %>
+		<br>
+	<% end %>
+<% end %>
+

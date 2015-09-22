@@ -1,7 +1,8 @@
-<h1>新規投稿</h1>
+<h1>予定の追加</h1>
 <div id="form">
 <div id="content">
 <%= form_for(@note) do |f|%>
+	<%= f.hidden_field :note_type , :value => "0"%>
 	タイトル
 	<br>
 	<%= f.text_field :title %>
@@ -19,17 +20,17 @@
 	<%= f.datetime_select :start_time %>〜
 	<%= f.datetime_select :end_time %>
 	<br>
-	お知らせ機能
-	<br>
-	<%= f.radio_button :alarm , true %>する
-	<%= f.radio_button :alarm , false, { :checked => true }%>しない
-	<br>
 	URL
 	<br>
 	<%= f.url_field :site_url %>
 	<br>
 	カテゴリー
-	<%= f.collection_select :category_id, Category.all, :id, :category_name %>
+	<br>
+	<% if @categories == nil %>
+		登録できるカテゴリーがありません！！
+	<% else %>
+		<%= f.collection_select :category_id, @categories, :id, :category_name %>
+	<% end %>
 	<br>
 	<input type="reset"　value="リセット">
 	<%= f.submit "投稿" %>

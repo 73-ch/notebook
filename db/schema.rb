@@ -11,13 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811041025) do
+ActiveRecord::Schema.define(version: 20150916133711) do
+
+  create_table "belong_user_to_groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "importance"
+    t.integer  "user_id"
+    t.integer  "for_user"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "message_type"
+    t.string   "site_urls"
+    t.boolean  "done",         default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "notes", force: :cascade do |t|
@@ -27,8 +64,7 @@ ActiveRecord::Schema.define(version: 20150811041025) do
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean  "alarm"
-    t.string   "file"
+    t.integer  "note_type"
     t.string   "site_url"
     t.integer  "category_id"
     t.boolean  "done",        default: false

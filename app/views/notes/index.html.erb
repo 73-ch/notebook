@@ -3,14 +3,14 @@
 <div class="row">
 <div id="box" class="col-md-4 col-height">
     <div id="note1">
-      <% if @note1 = "現在のノートはありません" %>
-        <h2><%= @note1 %></h2>
-      <% else %>
+      <% if @note1 %>
         <%= link_to (@note1) do %>
-              <h2>現在のノート</h2>
-              <h3><%= @note1.title %></h3>
-              <h3><%= @note1.content %></h3>
-          <% end %>
+          <h2>現在のノート</h2>
+          <h3><%= @note1.title %></h3>
+          <h3><%= @note1.content %></h3>
+        <% end %>
+      <% else %>
+        <h2>現在のノートはありません</h2>
       <% end %>
     </div>
 </div>
@@ -19,13 +19,17 @@
     <div id="note2">
       <% if @note2 %>
         <%= link_to (@note2) do %>
-              <h2>現在のノート</h2>
-              <h3><%= @note2.title %></h3>
-              <h3><%= @note2.content %></h3>
+          <% if @notes_count == 0 || @notes_count == 1 %>
+            <h2>重要なノート</h2>
+          <% else %>
+            <h2>現在のノート</h2>
           <% end %>
+          <h3><%= @note2.title %></h3>
+          <h3><%= @note2.content %></h3>
+        <% end %>
       <% else %>
         <h2>ノートがありません</h2>
-        <% end %>
+      <% end %>
     </div>
 </div>
 
@@ -33,9 +37,15 @@
     <div id="note3">
       <% if @note3 %>
         <%= link_to (@note3) do %>
-              <h2>現在のノート</h2>
-              <h3><%= @note3.title %></h3>
-              <h3><%= @note3.content %></h3>
+          <% if @notes_count == 0 || @notes_count == 1 %>
+            <h2>次の予定のノート</h2>
+          <% elsif @notes_count == 2 %>
+            <h2>重要なノート</h2>
+          <% else %>
+            <h2>現在のノート</h2>
+          <% end %>
+          <h3><%= @note3.title %></h3>
+          <h3><%= @note3.content %></h3>
           <% end %>
       <% else %>
         <h2>ノートがありません</h2>
@@ -90,16 +100,23 @@
   </div>
 </div>
 <div id="box2" class="col-md-2">
-  <div id="category_new_box">
-    <%= link_to (category_path) do %>
-      <h3>カテゴリー追加</h3>
+  <div id="new_note_box">
+    <%= link_to ("/new") do %>
+      <h3>予定の追加</h3>
     <% end %>
   </div>
 </div>
 <div id="box2" class="col-md-2">
-  <div id="new_note_box">
-    <%= link_to ("/new") do %>
-      <h3>新規登録</h3>
+  <div id="new_date_box">
+    <%= link_to ("/new_date") do %>
+      <h3>スケジュールの追加</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="new_memo_box">
+    <%= link_to ("/new_memo") do %>
+      <h3>メモの追加</h3>
     <% end %>
   </div>
 </div>
@@ -107,6 +124,13 @@
   <div id="index_importance_box">
     <%= link_to (index_importance_path) do %>
       <h3>重要度で並び替え</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="category_new_box">
+    <%= link_to (category_path) do %>
+      <h3>カテゴリー追加</h3>
     <% end %>
   </div>
 </div>

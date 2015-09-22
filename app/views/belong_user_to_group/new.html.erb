@@ -1,0 +1,13 @@
+<%= form_for(@belong_user_to_group) do |f|%>
+	<%= f.collection_select :group_id, @groups, :id, :name %>
+	パスワード
+	<br>
+	<%= f.password_field :password %>
+	<br>
+	確認
+	<br>
+	<%= f.password_field :password_confirmation %>
+	<br>
+	<input type="reset"　value="リセット">
+	<%= f.submit "グループに参加" %>
+<% end %>

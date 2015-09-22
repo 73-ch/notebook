@@ -1,0 +1,35 @@
+<h1>スケジュールの追加</h1>
+<div id="form">
+<div id="content">
+<%= form_for(@note) do |f|%>
+	<%= f.hidden_field :note_type ,:value => "1"%>
+	タイトル
+	<br>
+	<%= f.text_field :title %>
+	<br>
+	内容
+	<br>
+	<%= f.text_area :content %>
+	<br>
+	重要度
+	<br>
+	<%= f.range_field :importance %>
+	<br>
+	期間
+	<br>
+	<%= f.date_select :start_time %>〜
+	<%= f.date_select :end_time %>
+	<br>
+	URL
+	<br>
+	<%= f.url_field :site_url %>
+	<br>
+	カテゴリー
+	<%= f.collection_select :category_id, Category.all, :id, :category_name %>
+	<br>
+	<input type="reset"　value="リセット">
+	<%= f.submit "投稿" %>
+<% end %>
+<input type="button" onClick='history.back();' value="戻る">
+</div>
+</div>

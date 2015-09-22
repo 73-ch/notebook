@@ -38,6 +38,8 @@ header h1 {
 
 header #mainNav {
     float: right;
+    height:  42px;
+    width: 100%;
 }
 
 header #logo{
@@ -64,15 +66,23 @@ header #mainNav li a {
     font-size: 15px;
 }
 
+
 #nav {
     margin:0;
     padding: 0;
     list-style: none;
+    height: 100%;
+    float: right;
+}
+#nav li{
+    width: auto;
+    float: right;
 }
 #nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    width: 100%;
 }
 
 /*clearing method*/
@@ -92,7 +102,7 @@ header #mainNav li a {
 
 /*style for nav*/
 #nav ul{
-    width: 30px;
+    width: 100%;
 }
 
 /*submenus*/
@@ -107,8 +117,23 @@ header #mainNav li a {
     transition: all .2s ease-in-out;
 }
 
+#flip > li{
+  perspective: 400px;
+}
+
+#flip li ul{
+  visibility: hidden;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  transition: .3s;
+}
+
+#flip li:hover ul{
+  visibility: visible;
+  transform: rotateX(0);
+}
 #nav li:hover > ul {
-    opacity: 1;
+    opacity: 0.5;
     visibility: visible;
     margin: 0;
 }
@@ -123,6 +148,7 @@ header #mainNav li a {
     float: none;
     display: block;
     border: 0;
+    width: 100%;
 }
 
 #nav ul li:hover{

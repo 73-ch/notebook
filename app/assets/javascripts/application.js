@@ -6,5 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
 //= require twitter/bootstrap
+//= require fullcalendar
 //= require_tree .
