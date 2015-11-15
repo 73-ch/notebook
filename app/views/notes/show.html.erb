@@ -1,13 +1,35 @@
+<% if @note.note_type = 0 %>
+	<h1>予定</h1>
+<% elsif @note.note_type = 1 %>
+	<h1>スケジュール</h1>
+<% else %>
+	<h1>メモ</h1>
+<% end %>
 <h1><%= @note.title %></h1>
 <h3><%= @note.content %></h3>
 <h3><%= @note.importance %></h3>
-<h3><%= @note.user_id %></h3>
-<h3><%= @note.site_url %></h3>
 <h3><%= @note.start_time %></h3>
 <h3><%= @note.end_time %></h3>
-<h3><%= @note.for_user %></h3>
-<h3><%= @note.done %></h3>
-<h3><%= @note.note_type %></h3>
+<h3>プロセス</h3>
+<br>
+<% @note_processes.each do |process| %>
+	<% if process.completed == true %>
+		✅<%= process.title %>
+		<%= link_to "未達成", "/note/process/update/#{process.id}" %>
+		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
+		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
+	<% else %>
+		　<%= process.title %>
+		<%= link_to "達成", "/note/process/update/#{process.id}" %>
+		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
+		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
+	<% end %>
+	
+	<br>
+<% end %>
+<%= link_to "-追加-", "/note/process/new/#{@note.id}", remote: true %>
+<br>
+<div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <%= link_to "一覧" , "/index" %>
 <%= link_to "追加登録", "/new" %>
 <%= link_to "編集", [:edit, @note] %>

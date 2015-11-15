@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916133711) do
+ActiveRecord::Schema.define(version: 20151111140416) do
 
   create_table "belong_user_to_groups", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150916133711) do
   create_table "categories", force: :cascade do |t|
     t.string   "category_name"
     t.integer  "user_id"
+    t.string   "color"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -34,12 +35,45 @@ ActiveRecord::Schema.define(version: 20150916133711) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "group_categories", force: :cascade do |t|
+    t.string   "category_name"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "color"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "group_notes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "importance"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "note_type"
+    t.string   "site_url"
+    t.integer  "category_id"
+    t.integer  "group_id"
+    t.boolean  "done",        default: false
+    t.integer  "progress",    default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invite_groups", force: :cascade do |t|
+    t.integer  "invite_user"
+    t.integer  "invited_user"
+    t.integer  "group_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -57,6 +91,15 @@ ActiveRecord::Schema.define(version: 20150916133711) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "note_processes", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "note_id"
+    t.integer  "user_id"
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -67,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150916133711) do
     t.integer  "note_type"
     t.string   "site_url"
     t.integer  "category_id"
+    t.integer  "progress",    default: 0
     t.boolean  "done",        default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -77,6 +121,15 @@ ActiveRecord::Schema.define(version: 20150916133711) do
     t.string "email"
     t.string "password_digest"
     t.string "remember_token"
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "progress"
+    t.integer  "user_id"
+    t.string   "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

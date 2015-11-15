@@ -1,0 +1,19 @@
+<div class="modal-dialog">
+  	<div class="modal-content">
+  		<h1>プロセスの追加</h1>
+		<div id="form">
+		<div id="content">
+		<%= form_for(@note_process, remote: true) do |f|%>
+			<%= f.hidden_field :note_id , :value => params[:note_id] %>
+			<%= f.hidden_field :user_id , :value => session[:user_id] %>
+			タイトル
+			<br>
+			<%= f.text_field :title %>
+			<br>
+			<input type="reset"　value="リセット">
+			<%= f.submit "プロセスの追加" %>
+		<% end %>
+		</div>
+		</div>
+  	</div>
+</div>

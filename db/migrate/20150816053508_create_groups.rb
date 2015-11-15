@@ -3,7 +3,6 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
     	t.string :name
     	t.integer :user_id
-    	t.string :password
 
       	t.timestamps null: false
     end

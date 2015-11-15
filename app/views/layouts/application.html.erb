@@ -36,6 +36,9 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
   </head>
   <body>
   <header>
@@ -58,7 +61,7 @@
       </li>
       <li><%= link_to "ノートの追加" ,"/new" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "予定の追加" ,"/new" %></li>
+          <li class="dropmenu_li"><%= link_to "予定の追加" ,"/new", remote: true %></li>
           <li class="dropmenu_li"><%= link_to "スケジュールの追加" ,"/new_date" %></li>
           <li class="dropmenu_li"><%= link_to "メモの追加" ,"/new_memo" %></li>
         </ul>
@@ -69,6 +72,13 @@
           <li class="dropmenu_li"><%= link_to "カテゴリー一覧", "/categories"%></li>
         </ul>
       </li>
+      <li><%= link_to 'グループ', groups_path %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "グループを作成", "/group/new" %></li>
+          <li class="dropmenu_li"><%= link_to "グループ一覧", "/groups" %></li>
+          <li class="dropmenu_li"><%= link_to "招待一覧", "/invite/index"%></li>
+        </ul>
+      </li>
       <% else %>
       <li><%= link_to 'ホーム' , '/top' %></li>
       <li><%= link_to 'ログイン', signin_path %></li>
@@ -77,8 +87,9 @@
     </ul>
   </nav>
   </header>
-  <div id="main">
+      <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
+  <div id="main">
 
 <%= yield %>
 </div>

@@ -93,6 +93,13 @@
   </div>
 </div>
 <div id="box2" class="col-md-2">
+  <div id="index_date_box">
+    <%= link_to (index_date_path) do %>
+      <h3>カレンダー</h3>
+      <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
   <div id="category_box">
     <%= link_to (categories_path) do %>
       <h3>カテゴリー一覧</h3>
@@ -101,7 +108,7 @@
 </div>
 <div id="box2" class="col-md-2">
   <div id="new_note_box">
-    <%= link_to ("/new") do %>
+    <%= link_to "/new", remote: true do %>
       <h3>予定の追加</h3>
     <% end %>
   </div>
@@ -135,6 +142,7 @@
   </div>
 </div>
 </div>
+<div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </div>
 <script type="text/javascript">
   function set2fig(num) {

@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   include NotesHelper
   include CategoriesHelper
   include HomeHelper
+  	def login_checker
+		if session[:user_id] == nil
+			redirect_to new_session_path
+		end
+	end
 end

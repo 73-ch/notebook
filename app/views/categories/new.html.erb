@@ -1,6 +1,9 @@
 <%= form_for(@category) do |f| %>
 	カテゴリ名
+	<br>
 	<%= f.text_field :category_name %>
+	<br>
+	<%= f.color_field :color %>
 	<br>
 	<%= f.submit "登録" %>
 <% end %>
