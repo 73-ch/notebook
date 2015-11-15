@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20151111140416) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "category_name"
+    t.string   "name"
     t.integer  "user_id"
     t.string   "color"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "follows", force: :cascade do |t|

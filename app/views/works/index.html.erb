@@ -1,7 +1,5 @@
 <% @all.each do |f| %>
-	<% if f.category_name.nil? == false %>
-		<%= f.category_name %>
-	<% elsif f.name.nil? == false %>
+	<%= link_to "" do %>
 		<%= f.name %>
-	<% end %> 	
+	<% end %>
 <% end %>

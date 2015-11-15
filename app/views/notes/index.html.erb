@@ -67,12 +67,12 @@
         <% note = category.notes.order("importance DESC").first %>
         <% if note %>
           <%= link_to ("category/#{category.id}") do %>
-            <h2><%= category.category_name %></h2>
+            <h2><%= category.name %></h2>
             <h3><%= note.title %></h3>
             <h3><%= note.content %></h3>
           <% end %>
         <% else %>
-          <h3><%= category.category_name %>にノートがありません！</h3>
+          <h3><%= category.name %>にノートがありません！</h3>
         <% end %>
       </div>
     </div>
