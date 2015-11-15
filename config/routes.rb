@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/index_date" => "notes#index_date"
   get '/event/json' => 'notes#event_json'
 
-  get '/category' => 'categories#new'
+  get '/category/new/:type' => 'categories#new'
   get '/categories' => 'categories#index'
   post '/categories' => 'categories#create'
   delete '/category_destroy' => 'categories#destroy'
@@ -73,12 +73,5 @@ Rails.application.routes.draw do
   delete '/note/process/destroy/:id' => 'note_processes#destroy'
   get '/note/process/edit/:id' => 'note_processes#edit'
   get '/note/process/update/:id' => 'note_processes#update'
-
-  get '/work/new' => 'works#new'
-  post '/works' => 'works#create'
-  delete 'work/destroy/:id' => 'works#destroy'
-  get 'work/:id' => 'works#show'
-  get 'work/edit/:id' => 'works#edit'
-  get 'works' => 'works#index'
 
 end

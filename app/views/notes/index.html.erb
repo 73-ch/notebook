@@ -101,7 +101,7 @@
 </div>
 <div id="box2" class="col-md-2">
   <div id="category_box">
-    <%= link_to (categories_path) do %>
+    <%= link_to "categories" do %>
       <h3>カテゴリー一覧</h3>
     <% end %>
   </div>
@@ -136,8 +136,15 @@
 </div>
 <div id="box2" class="col-md-2">
   <div id="category_new_box">
-    <%= link_to (category_path) do %>
+    <%= link_to "category/new/0" do %>
       <h3>カテゴリー追加</h3>
+    <% end %>
+  </div>
+</div>
+<div id="box2" class="col-md-2">
+  <div id="project_new_box">
+    <%= link_to "category/new/1" do %>
+      <h3>プロジェクト追加</h3>
     <% end %>
   </div>
 </div>

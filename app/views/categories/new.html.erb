@@ -1,5 +1,12 @@
 <%= form_for(@category) do |f| %>
-	カテゴリ名
+	<%= f.hidden_field :user_id, :value => session[:user_id] %>
+	<% if params[:type] == "1" %>
+		<%= f.hidden_field :category_type, :value => "1" %>
+		プロジェクト名
+	<% else %>
+		<%= f.hidden_field :category_type, :value => "0" %>
+		カテゴリ名
+	<% end %>
 	<br>
 	<%= f.text_field :name %>
 	<br>

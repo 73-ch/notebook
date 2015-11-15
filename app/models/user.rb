@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :invite_groups
   has_many :group_notes
   has_many :group_dategories
-  has_many :works
   has_many :note_processes
 
   has_secure_password

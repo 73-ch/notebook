@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 20151111140416) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.integer  "category_type"
     t.integer  "user_id"
+    t.integer  "progress"
     t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "follows", force: :cascade do |t|
@@ -36,12 +38,12 @@ ActiveRecord::Schema.define(version: 20151111140416) do
   end
 
   create_table "group_categories", force: :cascade do |t|
-    t.string   "category_name"
+    t.string   "name"
     t.integer  "user_id"
     t.integer  "group_id"
     t.string   "color"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "group_notes", force: :cascade do |t|
@@ -121,15 +123,6 @@ ActiveRecord::Schema.define(version: 20151111140416) do
     t.string "email"
     t.string "password_digest"
     t.string "remember_token"
-  end
-
-  create_table "works", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "progress"
-    t.integer  "user_id"
-    t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
