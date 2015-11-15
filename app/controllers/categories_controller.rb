@@ -14,7 +14,6 @@ class CategoriesController < ApplicationController
 	end
 
 	def create
-		login_checker
 		@category = Category.create(category_params)
 		@category.user_id = session[:user_id]
 		@category.save

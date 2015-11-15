@@ -26,4 +26,4 @@ class WorksController < ApplicationController
 	def work_params
 		params.require(:work).permit(:name, :color, :user_id)
 	end
-end
+end	
