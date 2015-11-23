@@ -1,0 +1,190 @@
+/* line 4, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#nowdate {
+  width: auto;
+}
+
+/* line 7, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+.col-md-4 {
+  padding: 5px;
+}
+
+/* line 11, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#box {
+  height: 380px;
+}
+
+/* line 14, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#box2 {
+  height: 190px;
+}
+
+/* line 17, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+.col-md-2 {
+  height: 190px;
+  padding: 5px;
+}
+
+/* line 22, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category0 {
+  background-color: #b22222;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 28, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category1 {
+  background-color: #afeeee;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 33, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category2 {
+  background-color: #ff00ff;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 38, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category3 {
+  background-color: #708790;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 43, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category4 {
+  background-color: #fffafa;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 48, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category5 {
+  background-color: #ffe4b5;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 53, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category6 {
+  background-color: #4682b4;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 58, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category7 {
+  background-color: #00a497;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 63, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category8 {
+  background-color: #5654a2;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 68, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category9 {
+  background-color: #d7003a;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 75, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#box h3, h2 {
+  margin-top: 0px;
+}
+
+/* line 79, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#box a {
+  text-decoration: none;
+}
+
+/* line 83, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#note1 {
+  background-color: #dc143c;
+  height: 370px;
+  padding: 10px;
+}
+
+/* line 89, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#note2 {
+  background-color: #00008b;
+  color: #e6e6fa;
+  height: 370px;
+  padding: 10px;
+}
+
+/* line 96, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#note3 {
+  background-color: #00afcc;
+  height: 370px;
+  padding: 10px;
+}
+
+/* line 102, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#time_box {
+  background-color: #3cb371;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 108, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#profile_box {
+  background-color: #ff8c00;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 114, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category_box {
+  background-color: #00bfff;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 120, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#category_new_box {
+  background-color: #ffebcd;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 126, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#new_note_box {
+  background-color: #6b8e23;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 132, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#new_date_box {
+  background-color: #3f3ea3;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 138, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#new_memo_box {
+  background-color: #f837f3;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 144, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#index_importance_box {
+  background-color: #add8e6;
+  height: 180px;
+  padding: 10px;
+}
+
+/* line 150, /Users/Namikawa/Desktop/project/app/assets/stylesheets/index.css.scss */
+#index_date_box {
+  background-color: #808000;
+  height: 180px;
+  padding: 10px;
+}
