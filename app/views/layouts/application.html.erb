@@ -44,11 +44,15 @@
   <header>
     <ul id="main_nav" class="dropmenu">
       <% if signed_in? %>
-      <li><%= link_to "ホーム" , "/index" %></li>
+      <li><%= link_to "ホーム" , "/index" %>
+        <ul>
+          <li></li>
+        </ul>
+      </li>
       <li><%= link_to "アカウント", "#"%>
         <ul>
-        <li><%= link_to 'プロフィール', current_user %></li>
-        <li><%= link_to 'ログアウト', signout_path, method: :delete %></li>
+          <li class="dropmenu_li"><%= link_to 'プロフィール', current_user %></li>
+          <li class="dropmenu_li"><%= link_to 'ログアウト', signout_path, method: :delete %></li>
         </ul>
       </li>
       <li><%= link_to "メッセージの追加", "/new_message" %>
