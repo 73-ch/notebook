@@ -12,21 +12,9 @@
 <h3><%= @note.end_time %></h3>
 <h3>プロセス</h3>
 <br>
-<% @note_processes.each do |process| %>
-	<% if process.completed == true %>
-		✅<%= process.title %>
-		<%= link_to "未達成", "/note/process/update/#{process.id}" %>
-		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
-		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
-	<% else %>
-		　<%= process.title %>
-		<%= link_to "達成", "/note/process/update/#{process.id}" %>
-		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
-		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
-	<% end %>
-	
-	<br>
-<% end %>
+<div class="process-index">
+	<%= render "index_processes" %>
+</div>
 <%= link_to "-追加-", "/note/process/new/#{@note.id}", remote: true %>
 <br>
 <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

@@ -1,11 +1,15 @@
 class NoteProcessesController < ApplicationController
+	before_action :login_checker
 	def new
 		@note_process = NoteProcess.new
 	end
 	def create
 		@note_process = NoteProcess.create(note_process_params)
 		@note_process.save
-		@note_processes = NoteProcess.where(note_id: params[:id],user_id: session[:user_id])
+
+		@note_processes = NoteProcess.where(note_id: @note_process.note_id)
+		length = @note_processes.count
+		logger.info("#{length}")
 	end
 	def destroy
 		@note_process = NoteProcess.find(params[:id])

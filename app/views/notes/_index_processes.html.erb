@@ -1,0 +1,14 @@
+<% @note_processes.each do |process| %>
+	<% if process.completed == true %>
+		✅<%= process.title %>
+		<%= link_to "未達成", "/note/process/update/#{process.id}" %>
+		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
+		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
+	<% else %>
+		　<%= process.title %>
+		<%= link_to "達成", "/note/process/update/#{process.id}" %>
+		<%= link_to "編集", "/note/process/edit/#{process.id}", remote: true %>
+		<%= link_to "削除", "/note/process/destroy/#{process.id}",:method => :delete %>
+	<% end %>
+	<br>
+<% end %>

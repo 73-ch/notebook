@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :login_checker
   before_filter :set_request_from
   before_action :done_creater, only: [:index, :index_particle, :index_importance, :show, :edit]
   def new

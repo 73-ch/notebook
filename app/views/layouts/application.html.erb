@@ -13,7 +13,6 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= stylesheet_link_tag "inside/header" , media: "all" ,"data-turbolinks-track" => true %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -41,9 +40,9 @@
 
   </head>
   <body>
+    <div id="nav"></div>
   <header>
-    <nav id="mainNav">
-    <ul id="nav" class="dropmenu">
+    <ul id="main_nav" class="dropmenu">
       <% if signed_in? %>
       <li><%= link_to "ホーム" , "/index" %></li>
       <li><%= link_to "アカウント", "#"%>
@@ -66,13 +65,6 @@
           <li class="dropmenu_li"><%= link_to "メモの追加" ,"/new_memo" %></li>
         </ul>
       </li>
-      <li><%= link_to 'カテゴリー', categories_path %>
-        <ul>
-          <li class="dropmenu_li"><%= link_to "カテゴリーの追加", "/category/new/0"%></li>
-          <li class="dropmenu_li"><%= link_to "プロジェクトの追加", "/category/new/1"%></li>
-          <li class="dropmenu_li"><%= link_to "カテゴリー一覧", "/categories"%></li>
-        </ul>
-      </li>
       <li><%= link_to 'グループ', groups_path %>
         <ul>
           <li class="dropmenu_li"><%= link_to "グループを作成", "/group/new" %></li>
@@ -86,7 +78,6 @@
       <li><%= link_to 'アカウント作成', signup_path %></li>
       <% end %>
     </ul>
-  </nav>
   </header>
       <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 

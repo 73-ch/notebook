@@ -1,0 +1,113 @@
+@font-face{
+    font-family: "CODE Light";
+    src:url("../codelight.otf")  format("truetype");
+    font-family: "mplus-1p-light";
+    src:url("../mplus-1p-light.ttf") format("truetype");
+}
+
+body{
+    background-color: #e7d09c;
+}
+
+/*#top {
+    font-size: 30px;
+    text-decoration: none;
+    color: #777;
+    font-family: "CODE Light";
+}*/
+
+header {
+    background-color: #6c3116; 
+    border-bottom: 3px solid #5e2a13;
+    border-top: 1px solid rgba(255,255,255,0.6);
+    height: 42px;
+    top: 0;
+    width:100%;
+    position:fixed;
+    z-index: 100;
+    margin:none;
+}
+
+header h1 {
+    color: #e2916c;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    line-height: 30px;
+    float: left;
+    font-weight: bold; 
+}
+
+#nav{
+    width: 960px;
+    height: 42px;
+}
+
+.dropmenu{
+  *zoom: 1;
+  list-style-type: none;
+  width: auto;
+  margin: 0px auto 0px;
+  padding: 0;
+  height: 100%;
+}
+.dropmenu:before, .dropmenu:after{
+  content: "";
+  display: table;
+}
+.dropmenu:after{
+  clear: both;
+}
+.dropmenu li{
+  position: relative;
+  width: 20%;
+  height: 100%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.dropmenu li a{
+  display: block;
+  margin: 0;
+  padding:10px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
+  height: 100%;
+}
+.dropmenu li ul{
+  list-style: none;
+  position: absolute;
+  z-index: 9999;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+.dropmenu li ul li{
+  width: 100%;
+}
+.dropmenu li ul li a{
+  padding: 13px 15px;
+  border-top: 1px solid #640;
+  background: #a07a4b;
+  text-align: left;
+}
+.dropmenu li:hover > a{
+  background: #996600;
+}
+.dropmenu li a:hover{
+  background: #996600;
+}
+
+#main_nav li ul{
+  opacity: 0;
+  top: 50%;
+  visibility: hidden;
+  transition: .5s;
+}
+#main_nav li:hover ul{
+  top: 100%;
+  visibility: visible;
+  opacity: 1;
+}

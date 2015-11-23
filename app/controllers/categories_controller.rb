@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_action :login_checker
 	def new
 		@category = Category.new
 	end

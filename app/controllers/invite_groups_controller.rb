@@ -1,5 +1,6 @@
 class InviteGroupsController < ApplicationController
 	before_action :check , only: :create
+	before_action :login_checker
 	def new
 		@invite_group = InviteGroup.new
 		belongs = BelongUserToGroup.where(user_id: session[:user_id])

@@ -1,4 +1,5 @@
 class FollowsController < ApplicationController
+  before_action :login_checker
   def index
     @follows = Follow.where(user_id: session[:user_id])
     @followeds = Follow.where(followed_id: session[:user_id])

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :login_checker
 	def index
     	@notes = Message.where(for_user: session[:user_id])
     	@users = User.all

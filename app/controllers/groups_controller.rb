@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+	before_action :login_checker
 	def new
 		@group = Group.new
 	end

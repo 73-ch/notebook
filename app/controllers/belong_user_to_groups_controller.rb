@@ -1,5 +1,6 @@
 class BelongUserToGroupsController < ApplicationController
 	before_action :check , only: [:create]
+	before_action :login_checker
 	def index
 		@belong_user_to_groups = BelongUserToGroup.where(user_id: session[:user_id])
 	end
