@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get "/index_particle" => "notes#index_particle"
   delete "/note_destroy" => 'notes#destroy'
   get "/index_date" => "notes#index_date"
-  get '/event/json' => 'notes#event_json'
+  get '/date/json' => 'notes#date_json'
+  get '/particle/json' => 'notes#particle_json'
 
   get '/category/new/:type' => 'categories#new'
   get '/categories' => 'categories#index'

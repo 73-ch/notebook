@@ -132,15 +132,14 @@ class NotesController < ApplicationController
   end
 
   def index_particle
-    notes = Note.where(user_id: session[:user_id], done: false)
-    @notes = notes.order("importance DESC")
+    @notes = Note.order("importance DESC").first(10)
   end
 
   def index_importance
     notes = Note.where(user_id: session[:user_id], done: false)
     @notes = notes.order("importance DESC")
   end
-  def event_json
+  def date_json
     events = Note.where.not(note_type: 2)
     @events = []
     events.each do |event|
@@ -159,6 +158,22 @@ class NotesController < ApplicationController
         allDay = false
       end
       @events.push(title: title, url: url, start: start, end: end_time, color: color, allDay: allDay)
+    end
+    render :json => @events
+  end
+  def particle_json
+    events = Note.order("importance DESC").first(10)
+    @events = []
+    events.each do |event|
+      title = event.title
+      url = "/notes/#{event.id}"
+      importance = event.importance
+      if event.category
+        color = event.category.color
+      else
+        color = nil
+      end
+      @events.push(title: title, url: url, importance: importance, color: color)
     end
     render :json => @events
   end

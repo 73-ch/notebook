@@ -1,20 +1,49 @@
-<%= stylesheet_link_tag "inside/index2" %>
-<div class="particle_main">
-<% @notes.each_with_index do |note ,i|%>
-  <% if i <= 7 %>
-  	<div class="note<%= i %>">
-  		<%= link_to (note) do %>
-		    <h2 class="particle_title"><%= note.title %></h2>
-		<% end %>
-	</div>
-    <style>
-    	div.note<%= i %>{
-    		background-color: <%= note.color %>;
-    	}
-    </style>
-	
-  <% end %>
-<% end %>
+<div id="particle_box">
 </div>
 <%= link_to "ホーム" , "/top" %>
 <%= link_to "新規登録" , "/new" %>
+<script type="text/javascript">
+	(function () {
+      var
+      	f = 0,
+      	f_max = 40,
+        height = 640,
+        width  = 1275,
+        diameter = 100,
+        draw = SVG('particle_box').size( width, height);
+        particles_x = [],
+        particles_y = [];
+
+        function Circle(){
+        this.x = Math.random() * (height - diameter);
+        this.y = Math.random() * (width - diameter);
+        }
+        function createCircle(url, title, color, importance){
+     //    do{
+					// move_width = Math.random() * (width - diameter);
+					// move_height = Math.random() * (height - diameter);
+     //    }while((0 >  particles_x.indexOf(move_width - 200) || 0 > particles_x.indexOf(move_width + 200)) && (0 >  particles_y.indexOf(move_height - 200) || 0 > particles_y.indexOf(move_height+ 200)));
+      	circle = draw.circle(diameter).attr({fill: color}).move(move_width, move_height);
+      	link = draw.link(url);
+      	text = link.text(title).move(move_width + 35, move_height + 40);
+        var group = link.group();
+        group.add(circle);
+        group.add(text);
+        particles_x.push(move_width);
+        particles_y.push(move_height);
+      };
+      <% @notes.each do |note| %>
+      	var
+	      	url = "/notes/<%= note.id %>",
+	      	title = "<%= note.title %>",
+	      	importance = <%= note.importance %>,
+	      	color;
+      	<% if note.category %>
+      		color = <%= note.category.color %>
+      	<% else %>
+      		color = '#'+Math.floor(Math.random()*16777215).toString(16);
+      	<% end %>
+      	createCircle(url,title,color,importance);
+      <% end %>
+})();
+</script>
