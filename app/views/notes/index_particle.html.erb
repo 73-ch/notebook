@@ -19,10 +19,8 @@
         this.y = Math.random() * (width - diameter);
         }
         function createCircle(url, title, color, importance){
-        do{
-					move_width = Math.random() * (width - diameter);
-					move_height = Math.random() * (height - diameter);
-        }while((0 >  particles_x.indexOf(move_width - 200) || 0 > particles_x.indexOf(move_width + 200)) && (0 >  particles_y.indexOf(move_height - 200) || 0 > particles_y.indexOf(move_height+ 200)));
+				move_width = Math.random() * (width - diameter);
+				move_height = Math.random() * (height - diameter);
       	circle = draw.circle(diameter).attr({fill: color}).move(move_width, move_height);
       	link = draw.link(url);
       	text = link.text(title).move(move_width + 35, move_height + 40);
