@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  def index
-    @users = User.all
-  end
-
   def show
     @user = User.find(params[:id])
     @notes = Note.where(user_id: session[:user_id])

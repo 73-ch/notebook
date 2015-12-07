@@ -3,45 +3,68 @@
 <%= link_to "ホーム" , "/top" %>
 <%= link_to "新規登録" , "/new" %>
 <script type="text/javascript">
-	(function () {
-      var
-      	f = 0,
-      	f_max = 40,
-        height = 640,
-        width  = 1275,
-        diameter = 100,
-        draw = SVG('particle_box').size( width, height);
-        particles_x = [],
-        particles_y = [];
+function urlValidity(group,url){
+        _link = group.parent();
+        _link.attr("href", url);
+  };
+(function () {
+  var
+    f = 0,
+    f_max = 40,
+    height = 640,
+    width  = 1275,
+    diameter = 100,
+    draw = SVG('particle_box').size( width, height);
+    particles_x = [],
+    particles_y = [];
 
-        function Circle(){
-        this.x = Math.random() * (height - diameter);
-        this.y = Math.random() * (width - diameter);
-        }
-        function createCircle(url, title, color, importance){
-				move_width = Math.random() * (width - diameter);
-				move_height = Math.random() * (height - diameter);
-      	circle = draw.circle(diameter).attr({fill: color}).move(move_width, move_height);
-      	link = draw.link(url);
-      	text = link.text(title).move(move_width + 35, move_height + 40);
-        var group = link.group();
-        group.add(circle);
-        group.add(text);
-        particles_x.push(move_width);
-        particles_y.push(move_height);
-      };
-      <% @notes.each do |note| %>
-      	var
-	      	url = "/notes/<%= note.id %>",
-	      	title = "<%= note.title %>",
-	      	importance = <%= note.importance %>,
-	      	color;
-      	<% if note.category %>
-      		color = <%= note.category.color %>
-      	<% else %>
-      		color = '#'+Math.floor(Math.random()*16777215).toString(16);
-      	<% end %>
-      	createCircle(url,title,color,importance);
+  function createCircle(url, title, color, importance){
+  	var
+			move_width = Math.random() * (width - diameter),
+			move_height = Math.random() * (height - diameter),
+		  circle = draw.circle(diameter).attr({fill: color}).move(move_width, move_height),
+		  link = draw.link(url).addClass('particle'),
+		  text = link.text(title).move(move_width + 35, move_height + 40),
+	  	group = link.group().draggable();
+	  group.add(circle);
+	  group.add(text);
+	  particles_x.push(move_width);
+	  particles_y.push(move_height);
+	  var group_id = group.attr("id"),
+	  		_group = document.getElementById(group_id),
+	  		flag = 0;
+	  function mousemove(){
+			 	_link = group.parent();
+			  url_drag = "javascript:void(0)";
+			  _link.attr("href", url_drag);
+			  flag = 1;
+		};
+	  _group.onmousedown = function(){
+	  	flag = 0;
+	  	window.addEventListener("mousemove", mousemove, false);
+	  };
+		_group.onmouseup = function(){
+			if (flag == 1) {
+			  setTimeout(function(a,b){
+			  	urlValidity(a,b)
+			  }, 0, group, url);
+			  window.removeEventListener("mousemove",mousemove, false);
+			  flag = 0;;
+			};
+		};
+  };
+  <% @notes.each do |note| %>
+    var
+	    url = "/notes/<%= note.id %>",
+	    title = "<%= note.title %>",
+	    importance = <%= note.importance %>,  	
+	    color;
+      <% if note.category %>
+      	color = <%= note.category.color %>
+      <% else %>
+      	color = '#'+Math.floor(Math.random()*16777215).toString(16);
       <% end %>
+      createCircle(url,title,color,importance);
+  <% end %>$
 })();
 </script>

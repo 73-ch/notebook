@@ -164,6 +164,7 @@
     // final drag
     var p = this.drag(e);
 
+
     // fire dragend event
     this.el.fire('dragend', { event: e, p: p, m: this.m, handler: this })
 

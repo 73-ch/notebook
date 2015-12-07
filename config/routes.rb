@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  resources :users, only: [:show, :new, :edit, :create, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   match 'signup', to: 'users#new', via: 'get'
@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   match 'signin', to: 'sessions#new', via: 'get'
   match 'signout', to: 'sessions#destroy', via: 'delete'
 
-
-  get '/top' =>'home#top'
-
-  root 'users#index'
+  root :to => 'home#top'
 
   resources :notes
   get '/new' => 'notes#new'

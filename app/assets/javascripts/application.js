@@ -5,8 +5,9 @@
 // the compiled file.
 //
 //= require jquery
-//= require svg
 //= require jquery_ujs
+//= require jquery-ui
+//= require svg
 //= require moment
 //= require fullcalendar
 //= require turbolinks

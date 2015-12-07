@@ -2479,7 +2479,7 @@ SVG.Container = SVG.invent({
   , 'mouseover'
   , 'mouseout'
   , 'mousemove'
-  // , 'mouseenter' -> not supported by IE
+  , 'mouseenter' 
   // , 'mouseleave' -> not supported by IE
   , 'touchstart'
   , 'touchmove'
