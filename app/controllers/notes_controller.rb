@@ -3,18 +3,8 @@ class NotesController < ApplicationController
   before_filter :set_request_from
   before_action :done_creater, only: [:index, :index_particle, :index_importance, :show, :edit]
   def new
-    @note = Note.new
-    categories = Category.where(user_id: session[:user_id])
-    @categories = categories.all
-  end
-
-  def new_date
-    @note = Note.new
-    categories = Category.where(user_id: session[:user_id])
-    @categories = categories.all  
-  end
-
-  def new_memo
+    @type = params[:type]
+    @source = params[:source]
     @note = Note.new
     categories = Category.where(user_id: session[:user_id])
     @categories = categories.all
@@ -23,52 +13,64 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to "/index"
+    redirect_to "/index_all"
   end
 
   def create
-    @now_time = DateTime.now
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
     @note.save
-    notes_all = Note.where(user_id: session[:user_id], done: false)
-    notes = []
-    @notes = notes_all.order("start_time ASC")
-    @notes_importance = notes_all.order("importance DESC").first
-    @notes.each do |note|
-      if note.start_time
-        if note.start_time - 2.days <= @now_time
-          notes.push(note)
-          if notes.count == 3
+    source = params[:source]
+    case source
+    when index_manager
+      notes_all = Note.where(user_id: session[:user_id], done: false)
+      @now_time = DateTime.now
+      notes = []
+      @notes = notes_all.order("start_time ASC")
+      @notes_importance = notes_all.order("importance DESC").first
+      @notes.each do |note|
+        if note.start_time
+          if note.start_time - 2.days <= @now_time
+            notes.push(note)
+            if notes.count == 3
+              break
+            end
+          else
+            @note_time = note
             break
-          end
-        else
-          @note_time = note
-          break
-        end  
+          end  
+        end
+      end 
+      @notes_count = notes.count
+      if @notes_count == 0
+        @note2 = @notes_importance
+        @note3 = @note_time
       end
-    end 
-    @notes_count = notes.count
-    if @notes_count == 0
-      @note2 = @notes_importance
-      @note3 = @note_time
+      if @notes_count == 1
+        @note1 = notes[0]
+        @note2 = @notes_importance
+        @note3 = @note_time
+      end
+      if @notes_count == 2
+        @note1 = notes[0]
+        @note2 = notes[1]
+        @note3 = @notes_importance
+      end
+      if @notes_count == 3
+        @note1 = notes[0]
+        @note2 = notes[1]
+        @note3 = notes[2]
+      end
+      @categories = Category.all
+    when index_particle
+      logger.info("case index_particle")
+      @notes = Note.order("importance DESC").first(10)
+    when index_day
+      datetime = DateTime.now
+      @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+      @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
     end
-    if @notes_count == 1
-      @note1 = notes[0]
-      @note2 = @notes_importance
-      @note3 = @note_time
-    end
-    if @notes_count == 2
-      @note1 = notes[0]
-      @note2 = notes[1]
-      @note3 = @notes_importance
-    end
-    if @notes_count == 3
-      @note1 = notes[0]
-      @note2 = notes[1]
-      @note3 = notes[2]
-    end
-    @categories = Category.all
   end
 
   def edit
@@ -81,7 +83,7 @@ class NotesController < ApplicationController
     @note_processes = NoteProcess.where(note_id: params[:id])
   end
 
-  def index 
+  def index_manager
     @now_time = DateTime.now
     notes_all = Note.where(user_id: session[:user_id], done: false)
     notes = []
@@ -127,17 +129,23 @@ class NotesController < ApplicationController
     @notes = Note.where(user_id: session[:user_id])
   end
 
-  def index_date
-    
+  def index_calender
   end
 
   def index_particle
     @notes = Note.order("importance DESC").first(10)
+    @source = "index_particle"
   end
 
   def index_importance
     notes = Note.where(user_id: session[:user_id], done: false)
     @notes = notes.order("importance DESC")
+  end
+  def index_day
+    datetime = DateTime.now
+    @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+    @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+    @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
   end
   def date_json
     events = Note.where.not(note_type: 2)

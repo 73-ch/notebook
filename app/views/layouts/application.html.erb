@@ -45,50 +45,54 @@
   <header>
     <ul id="main_nav" class="dropmenu">
       <% if signed_in? %>
-      <li><%= link_to "ホーム" , "/index" %>
+      <li><%= link_to 'groups', groups_path %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "create group", "/group/new" %></li>
+          <li class="dropmenu_li"><%= link_to "groups", "/groups" %></li>
+          <li class="dropmenu_li"><%= link_to "invites", "/invite/index"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "note" ,"#" %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "add plan" ,"/new/plan#{@source}", remote: true %></li>
+          <li class="dropmenu_li"><%= link_to "add schedule" ,"/new/schedule#{@source}", remote: true %></li>
+          <li class="dropmenu_li"><%= link_to "add memo" ,"/new/memo#{@source}", remote: true %></li>
+        </ul>
+      </li>
+      <li><%= link_to "index", "/new_message" %>
+        <ul>
+          <li class="dropmenu_li"><%= link_to "manager", "/index_manager" %></li>
+          <li class="dropmenu_li"><%= link_to "particle", "/index_particle" %></li>
+          <li class="dropmenu_li"><%= link_to "calender", "/index_calender" %></li>
+          <li class="dropmenu_li"><%= link_to "day", "/index_day" %></li>
+          <li></li>
+        </ul>
+      </li>
+      <li><%= link_to "account", "#"%>
+        <ul>
+          <li class="dropmenu_li"><%= link_to 'profile', current_user %></li>
+          <li class="dropmenu_li"><%= link_to 'sign out', signout_path, method: :delete %></li>
+          <li class="dropmenu_li"><%= link_to 'friend', "/follows" %></li>
+        </ul>
+      </li>
+      <li><%= link_to "home" , "/index" %>
         <ul>
           <li></li>
         </ul>
       </li>
-      <li><%= link_to "アカウント", "#"%>
-        <ul>
-          <li class="dropmenu_li"><%= link_to 'プロフィール', current_user %></li>
-          <li class="dropmenu_li"><%= link_to 'ログアウト', signout_path, method: :delete %></li>
-        </ul>
-      </li>
-      <li><%= link_to "メッセージの追加", "/new_message" %>
-        <ul>
-          <li class="dropmenu_li"><%= link_to "予定を送る", "/new_message" %></li>
-          <li class="dropmenu_li"><%= link_to "スケジュールを送る", "/new_date_message" %></li>
-          <li class="dropmenu_li"><%= link_to "メモを送る", "/new_memo_message" %></li>
-        </ul>
-      </li>
-      <li><%= link_to "ノートの追加" ,"/new" %>
-        <ul>
-          <li class="dropmenu_li"><%= link_to "予定の追加" ,"/new", remote: true %></li>
-          <li class="dropmenu_li"><%= link_to "スケジュールの追加" ,"/new_date" %></li>
-          <li class="dropmenu_li"><%= link_to "メモの追加" ,"/new_memo" %></li>
-        </ul>
-      </li>
-      <li><%= link_to 'グループ', groups_path %>
-        <ul>
-          <li class="dropmenu_li"><%= link_to "グループを作成", "/group/new" %></li>
-          <li class="dropmenu_li"><%= link_to "グループ一覧", "/groups" %></li>
-          <li class="dropmenu_li"><%= link_to "招待一覧", "/invite/index"%></li>
-        </ul>
-      </li>
       <% else %>
-      <li><%= link_to 'ホーム' , '/top' %></li>
-      <li><%= link_to 'ログイン', signin_path %></li>
-      <li><%= link_to 'アカウント作成', signup_path %></li>
+      <li><%= link_to 'home' , '/' %></li>
+      <li><%= link_to 'sign in', signin_path %></li>
+      <li><%= link_to 'sign up', signup_path %></li>
       <% end %>
     </ul>
   </header>
+
       <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
   <div id="main">
+    <%= yield %>
+  </div>
 
-<%= yield %>
-</div>
   </body>
 </html>

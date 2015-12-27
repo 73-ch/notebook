@@ -1,14 +1,11 @@
-<h1>プロフィール</h1>
+<h1>profile</h1>
 <div id="user">
-    <h3>名前</h3>
+    <h2>name</h2>
     <h4><%= @user.name %></h4>
-    <h3>メールアドレス</h3>
-    <h4><%= @user.email %></h4>
-    <h3>カテゴリー数</h3>
-    <h4><%= @categories.count %></h4>
-    <h4><%= link_to 'カテゴリー一覧', categories_path %></h4>
-    <h3>ノート数</h3>
-    <h4><%= @notes.count %></h4>
+    <h2>Email</h2>
+    <h3><%= @user.email %></h3>
+    <h2>notes</h2>
+    <h4><%= @notes.count %> notes</h4>
     <h4><%= link_to 'ノート一覧', index_all_path%></h4>
 </div>
 

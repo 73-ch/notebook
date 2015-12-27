@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def top
-  	not_login
   end
 
   def new

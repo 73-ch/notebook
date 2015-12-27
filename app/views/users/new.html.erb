@@ -1,19 +1,19 @@
-<h1>アカウント作成</h1>
-
+<div class="sign-in-box"></div>
+<h1>sign up</h1>
 <%= form_for(@user) do |f| %>
-  名前
+  name
   <br>
   <%= f.text_field :name %>
   <br>
-  メールアドレス
+  email
   <br>
   <%= f.text_field :email %>
   <br>
-  パスワード
+  password
   <br>
   <%= f.password_field :password %>
   <br>
-  確認
+  password confirmation
   <br>
   <%= f.password_field :password_confirmation %>
   <br>

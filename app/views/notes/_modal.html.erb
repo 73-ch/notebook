@@ -1,10 +1,24 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <h1>予定の追加</h1>
+    <div class="form_content">
+    <% if @type == "plan" %>
+      <h1>add plan</h1>
+    <% elsif @type == "schedule" %>
+      <h1>add shedule</h1>
+    <% else %>
+      <h1>add memo</h1>
+    <% end %>
     <div id="form">
     <div id="content">
     <%= form_for(@note, remote: true) do |f|%>
-      <%= f.hidden_field :note_type , :value => "0"%>
+      <% if @type == "plan" %>
+        <%= f.hidden_field :note_type , :value => "0"%>
+      <% elsif @type == "schedule" %>
+        <%= f.hidden_field :note_type , :value => "1"%>
+      <% else %>
+        <%= f.hidden_field :note_type , :value => "2"%>
+      <% end %>
+      <%= f.hidden_field :source, :value => @source %>
       タイトル
       <br>
       <%= f.text_field :title %>
@@ -15,12 +29,18 @@
       <br>
       重要度
       <br>
-      <%= f.range_field :importance %>
+      <%= f.range_field :importance, :id => "range" %>
+      <div id="importance_range"></div>
       <br>
       期間
       <br>
-      <%= f.datetime_select :start_time %>〜
-      <%= f.datetime_select :end_time %>
+      <% if @type == "plan" %>
+        <%= f.datetime_select :start_time %>〜
+        <%= f.datetime_select :end_time %>
+      <% elsif @type == 'schedule' %>
+        <%= f.date_select :start_time %>〜
+        <%= f.date_select :end_time %>
+      <% end %>
       <br>
       URL
       <br>
@@ -37,8 +57,21 @@
       <input type="reset"　value="リセット">
       <%= f.submit "投稿" %>
     <% end %>
-    <input type="button" onClick='history.back();' value="戻る">
+    </div>
     </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+(function(){
+  var range_width = 100,
+      range_height = 60,
+      height = range_height / 2,
+      width = range_width / 100,
+      draw = SVG('importance_range').size(range_width, range_height);
+  function drawLine(importance, name){
+    var move_width = range_width * importance / 100;
+    rect = draw.rect(width, height).move(move_width, 0);
+  }
+}())
+</script>

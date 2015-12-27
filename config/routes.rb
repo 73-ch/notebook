@@ -10,24 +10,29 @@ Rails.application.routes.draw do
   root :to => 'home#top'
 
   resources :notes
-  get '/new' => 'notes#new'
+  get '/new/:type/:source' => 'notes#new'
   get '/new_date' => 'notes#new_date'
   get '/new_memo' => 'notes#new_memo'
   post "/notes" => "notes#create"
-  get '/index' => 'notes#index'
+  delete "/note_destroy" => 'notes#destroy'
+
+  get '/index_manager' => 'notes#index'
   get '/index_all' => 'notes#index_all'
   get "/index_importance" => "notes#index_importance"
   get "/index_particle" => "notes#index_particle"
-  delete "/note_destroy" => 'notes#destroy'
-  get "/index_date" => "notes#index_date"
+  get "/index_calender" => "notes#index_calender"
+  get "/index_day" => "notes#index_day"
+
   get '/date/json' => 'notes#date_json'
   get '/particle/json' => 'notes#particle_json'
+
 
   get '/category/new/:type' => 'categories#new'
   get '/categories' => 'categories#index'
   post '/categories' => 'categories#create'
   delete '/category_destroy' => 'categories#destroy'
   get 'category/:id' => 'categories#show'
+
 
   get '/new_message' => 'messages#new'
   get '/new_date_message' => 'messages#new_date'
@@ -36,13 +41,16 @@ Rails.application.routes.draw do
   post "/messages" => "messages#create"
   get "/message/:id" => "messages#show"
 
+
   get '/follows' => "follows#index"
   get '/follows/new' => "follows#new"
   post '/follows' => 'follows#create'
 
+
   get 'belong_user_to_groups' => 'belong_user_to_groups#index'
   post 'belong_user_to_groups' => 'belong_user_to_groups#create'
   get '/group/joining/new' => 'belong_user_to_groups#new'
+
 
   get '/group/new' => 'groups#new'
   get 'group/:id/show' => 'groups#show'
@@ -50,10 +58,12 @@ Rails.application.routes.draw do
   get 'groups' => 'groups#index'
   delete 'group/destroy/:id' => 'groups#destroy'
 
+
   get 'invite/new' => 'invite_groups#new'
   post 'invite_groups' => 'invite_groups#create'
   get 'invite/index' => 'invite_groups#index'
   delete 'invite/destroy/:id' => 'invite_groups#destroy'
+
 
   get 'group/:id' => 'group_notes#index'
   get 'group_notes_all/:id' => 'group_notes#index_all'
@@ -65,6 +75,7 @@ Rails.application.routes.draw do
   get 'group/event/json' => 'group_notes#event_json'
   get 'group_note/edit/:id' => 'group_notes#edit'
   get 'group_note/:id' => 'group_notes#show'
+
 
   get '/note/process/new/:note_id' => 'note_processes#new'
   post '/note_processes' => 'note_processes#create'
