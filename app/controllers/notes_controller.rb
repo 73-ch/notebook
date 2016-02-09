@@ -8,6 +8,7 @@ class NotesController < ApplicationController
     @note = Note.new
     categories = Category.where(user_id: session[:user_id])
     @categories = categories.all
+    @notes = Note.where(user_id: session[:user_id], done: false)
   end
 
   def destroy

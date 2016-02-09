@@ -29,7 +29,7 @@
       <br>
       重要度
       <br>
-      <%= f.range_field :importance, :id => "range" %>
+      <%= f.range_field :importance, :id => "range " %>
       <div id="importance_range"></div>
       <br>
       期間
@@ -69,9 +69,12 @@
       height = range_height / 2,
       width = range_width / 100,
       draw = SVG('importance_range').size(range_width, range_height);
+  <% @notes.each do |note| %>
+    drawLine(<%= note.importance %>, "<%= note.title %>");
+  <% end %>
   function drawLine(importance, name){
     var move_width = range_width * importance / 100;
     rect = draw.rect(width, height).move(move_width, 0);
   }
-}())
+}());
 </script>

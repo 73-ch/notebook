@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post "/notes" => "notes#create"
   delete "/note_destroy" => 'notes#destroy'
 
-  get '/index_manager' => 'notes#index'
+  get '/index_manager' => 'notes#index_manager'
   get '/index_all' => 'notes#index_all'
   get "/index_importance" => "notes#index_importance"
   get "/index_particle" => "notes#index_particle"
