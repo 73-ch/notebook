@@ -1,0 +1,93 @@
+.modal-dialog{
+	width: 40%;
+}
+
+.modal-content{
+	background-color: #2F1D1D;
+	padding: 3px;
+}
+
+.embroidery{
+	border: dashed 1.5px #DDB994;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+.form{
+	width: 100%;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #FFF6cc;
+}
+
+.type{
+	margin: 0;
+	margin-left: 2px; 
+	color: #2F1D1D;
+	opacity: 0.8;
+	letter-spacing: 1px;
+}
+
+.title{
+	width: 100%;
+	max-width: 100%;
+	overflow-x: visible;
+	outline: none;
+	border: none;
+	background: none;
+	font-size: 30px;
+	appearance: none;
+}
+
+hr{
+	margin: 10px 0;
+	border-color: #999;
+	border-width: 1px;
+}
+
+.textarea{
+	box-sizing:border-box;
+	background: none;
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 40px;
+	padding: 0;
+	resize: vertical;
+	background: #FFF6cc -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(0.96, rgba(0, 0, 0, 0)),
+    color-stop(0.98, rgba(0, 0, 0, 0.5)),
+    to(rgba(0, 0, 0, 0))
+    );
+  background-size: auto 1.5em;
+}
+
+.range{
+	box-sizing:border-box;
+	outline: none;
+	position: absolute;
+	opacity: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+}
+
+#importance_range{
+	position: relative;
+	box-sizing:border-box;
+	width: 100%;
+	z-index: 10;
+	left: 0;
+}
+
+::-webkit-input-placeholder {
+  color: #999;
+  font-family: "CODE Light", "truetype";
+  background-color: #FFF6cc;
+  font-size: 30px;
+  padding: 0;
+
+}

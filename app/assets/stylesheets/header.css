@@ -1,24 +1,3 @@
-@font-face{
-    font-family: "CODE Light";
-    src:url("../codelight.otf")  format("truetype");
-    font-family: "mplus-1p-light";
-    src:url("../mplus-1p-light.ttf") format("truetype");
-}
-
-body{
-    background-color: #e7d09c;
-}
-
-/*#top {
-    font-size: 30px;
-    text-decoration: none;
-    color: #777;
-    font-family: "CODE Light";
-}*/
-h1{
-  font-family: "CODE Light", "truetype";
-}
-
 header {
     background-color: #6c3116; 
     border-bottom: 3px solid #5e2a13;
@@ -109,7 +88,7 @@ header h1 {
   opacity: 0;
   top: 50%;
   visibility: hidden;
-  transition: .5s;
+  transition: .25s;
 }
 #main_nav li:hover ul{
   top: 100%;

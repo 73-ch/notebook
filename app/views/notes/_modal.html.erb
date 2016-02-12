@@ -1,15 +1,7 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <div class="form_content">
-    <% if @type == "plan" %>
-      <h1>add plan</h1>
-    <% elsif @type == "schedule" %>
-      <h1>add shedule</h1>
-    <% else %>
-      <h1>add memo</h1>
-    <% end %>
-    <div id="form">
-    <div id="content">
+    <div class="embroidery">
+    <div class="form">
     <%= form_for(@note, remote: true) do |f|%>
       <% if @type == "plan" %>
         <%= f.hidden_field :note_type , :value => "0"%>
@@ -19,20 +11,14 @@
         <%= f.hidden_field :note_type , :value => "2"%>
       <% end %>
       <%= f.hidden_field :source, :value => @source %>
-      タイトル
+
+      <%= f.text_field :title, {:placeholder => "add #{@type}", :class => "title"} %>
+      <hr>
+      <%= f.text_area :content, {:id => "textarea", :class => "textarea", :placeholder => "content"} %>
       <br>
-      <%= f.text_field :title %>
-      <br>
-      内容
-      <br>
-      <%= f.text_area :content %>
-      <br>
-      重要度
-      <br>
-      <%= f.range_field :importance, :id => "range " %>
-      <div id="importance_range"></div>
-      <br>
-      期間
+      <div id="importance_range">
+        <%= f.range_field :importance, {:class => "range", :id => "range"} %>
+      </div>
       <br>
       <% if @type == "plan" %>
         <%= f.datetime_select :start_time %>〜
@@ -59,22 +45,34 @@
     <% end %>
     </div>
     </div>
-    </div>
   </div>
 </div>
 <script type="text/javascript">
 (function(){
   var range_width = 100,
-      range_height = 60,
-      height = range_height / 2,
+      height = 30,
       width = range_width / 100,
-      draw = SVG('importance_range').size(range_width, range_height);
+      draw = SVG('importance_range').size(range_width, height),
+      range = document.getElementById('range');
+  // range.addEventListener('change', rangeChanged, false);
   <% @notes.each do |note| %>
-    drawLine(<%= note.importance %>, "<%= note.title %>");
+    drawLine(<%= note.importance %>, "<%= note.title %>", "#000");
   <% end %>
-  function drawLine(importance, name){
+  var now_rect = drawLine(50, "now", "#ff0000");
+  function drawLine(importance, name, col){
     var move_width = range_width * importance / 100;
-    rect = draw.rect(width, height).move(move_width, 0);
+    rect = draw.rect(width, height).move(move_width, 0).fill(col);
+  }
+
+  // function rangeChanged(e){
+
+  // }
+
+  var textarea = document.getElementById('textarea');
+  textarea.addEventListener('change', changeBoxSize, false);
+
+  function changeBoxSize(e){
+
   }
 }());
 </script>

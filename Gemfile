@@ -31,7 +31,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rake'
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
 gem 'therubyracer', platforms: :ruby
 
 gem 'activerecord'

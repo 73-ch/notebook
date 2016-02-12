@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   resources :notes
   get '/new/:type/:source' => 'notes#new'
-  get '/new_date' => 'notes#new_date'
-  get '/new_memo' => 'notes#new_memo'
   post "/notes" => "notes#create"
   delete "/note_destroy" => 'notes#destroy'
 

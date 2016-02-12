@@ -7,6 +7,27 @@
  *= require_self
 */
 
+@font-face{
+    font-family: "CODE Light";
+    src:url("../codelight.otf")  format("truetype");
+    font-family: "mplus-1p-light";
+    src:url("../mplus-1p-light.ttf") format("truetype");
+}
+
+body{
+    background-color: #FFF6cc;
+}
+
+/*#top {
+    font-size: 30px;
+    text-decoration: none;
+    color: #777;
+    font-family: "CODE Light";
+}*/
+h1{
+  font-family: "CODE Light", "truetype";
+}
+
 #main{
 	padding: 5px;
 }
