@@ -19,7 +19,6 @@
       <div id="importance_range">
         <%= f.range_field :importance, {:class => "range", :id => "range"} %>
       </div>
-      <br>
       <% if @type == "plan" %>
         <%= f.datetime_select :start_time %>〜
         <%= f.datetime_select :end_time %>
@@ -49,24 +48,33 @@
 </div>
 <script type="text/javascript">
 (function(){
-  var range_width = 100,
+  var importance_range = document.getElementById("importance_range");
+  var range_width = 484.391,
       height = 30,
       width = range_width / 100,
       draw = SVG('importance_range').size(range_width, height),
-      range = document.getElementById('range');
-  // range.addEventListener('change', rangeChanged, false);
+      range = document.getElementById('range'),
+      range_click = false;
+
+  importance_range.height = height;
+  range.addEventListener('input', rangeChanged, false);
   <% @notes.each do |note| %>
     drawLine(<%= note.importance %>, "<%= note.title %>", "#000");
   <% end %>
-  var now_rect = drawLine(50, "now", "#ff0000");
+  var now_move_width = range_width * 0.5 - width / 2;
+  var now_importance = 50;
+  var now_rect = draw.rect(width, height).move(now_move_width, 0).fill("#ff0000");
   function drawLine(importance, name, col){
     var move_width = range_width * importance / 100;
-    rect = draw.rect(width, height).move(move_width, 0).fill(col);
+    rect = draw.rect(width, height).move(move_width - width / 2, 0).fill(col);
   }
 
-  // function rangeChanged(e){
 
-  // }
+  function rangeChanged(){
+    now_rect.remove();
+    now_move_width = range_width * range.value / 100 - width / 2;
+    now_rect = draw.rect(width, height).move(now_move_width, 0).fill("#ff0000");
+  }
 
   var textarea = document.getElementById('textarea');
   textarea.addEventListener('change', changeBoxSize, false);
