@@ -5,6 +5,8 @@
 // the compiled file.
 //
 //= require jquery
+// require jquery.ui.core
+// require jauery.ui.datepicker
 //= require jquery_ujs
 //= require svg
 //= require moment
