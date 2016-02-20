@@ -1,4 +1,5 @@
-<div id="box" class="col-md-4 col-height">
+<div id="notes-box" class="col-md-8 box">
+  <div id="box">
     <div id="note1">
       <% if @note1 %>
         <%= link_to (@note1) do %>
@@ -10,9 +11,9 @@
         <h2>現在のノートはありません</h2>
       <% end %>
     </div>
-</div>
+  </div>
 
-<div id="box" class="col-md-4 col-height">
+  <div id="box">
     <div id="note2">
       <% if @note2 %>
         <%= link_to (@note2) do %>
@@ -28,9 +29,9 @@
         <h2>ノートがありません</h2>
       <% end %>
     </div>
-</div>
+  </div>
 
-<div id="box" class="col-md-4 col-height">
+  <div id="box">
     <div id="note3">
       <% if @note3 %>
         <%= link_to (@note3) do %>
@@ -43,12 +44,19 @@
           <% end %>
           <h3><%= @note3.title %></h3>
           <h3><%= @note3.content %></h3>
-          <% end %>
+        <% end %>
       <% else %>
         <h2>ノートがありません</h2>
-        <% end %>
+      <% end %>
     </div>
+  </div>
 </div>
+
+<div id="box" class="col-md-4 box">
+  <div id="calendar-box">
+  </div>
+</div>
+
 <% if @categories %>
   <% @categories.each_with_index do |category,i| %>
     <div id="box2" class="col-md-2 col-height">

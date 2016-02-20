@@ -5,11 +5,10 @@
 // the compiled file.
 //
 //= require jquery
-// require jquery.ui.core
-// require jauery.ui.datepicker
 //= require jquery_ujs
 //= require svg
 //= require moment
+//= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require turbolinks
 //= require_tree .

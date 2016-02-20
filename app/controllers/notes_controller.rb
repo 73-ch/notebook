@@ -20,6 +20,8 @@ class NotesController < ApplicationController
   def create
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
+    @note.start_time = DateTime.parse(params[:start_time])
+    @note.end_time = DateTime.parse(params[:end_time])
     @note.save
     source = params[:source]
     case source
@@ -189,7 +191,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:note_type, :title, :content, :importance, :start_time, :category_id, :end_time, :site_url)
+    params.require(:note).permit(:note_type, :title, :content, :importance,  :category_id, :site_url)
   end
 
   def set_request_from

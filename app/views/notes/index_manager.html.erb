@@ -1,36 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="index">
-      <%= render "index_manager" %>
-    </div>
-    <div id="box2" class="col-md-4">
+    <div class="col-md-12">
       <div id="time_box">
-        <h2>現在の時刻</h2>
-        <h3 id="now_date"></h3>
-        <h3 id="time"></h3>
+        <h1 id="now_date"></h1>
       </div>
     </div>
-    <div id="box2" class="col-md-2">
-      <div id="category_box">
-        <%= link_to "categories" do %>
-          <h3>カテゴリー一覧</h3>
-        <% end %>
-      </div>
-    </div>
-    <div id="box2" class="col-md-2">
-      <div id="category_new_box">
-        <%= link_to "category/new/0" do %>
-          <h3>カテゴリー追加</h3>
-        <% end %>
-      </div>
-    </div>
-    <div id="box2" class="col-md-2">
-      <div id="project_new_box">
-        <%= link_to "category/new/1" do %>
-          <h3>プロジェクト追加</h3>
-        <% end %>
-      </div>
-    </div>
+    <%= render "index_manager" %>
   </div>
   <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 </div>
@@ -50,9 +25,22 @@
      var nowHour = set2fig( nowTime.getHours() );
      var nowMin = set2fig( nowTime.getMinutes() );
      var time = nowHour + ":" + nowMin;
-     var date = nowYear + "/" + nowMonth + "/" + nowDay;
-     document.getElementById("time").innerHTML = time;
-     document.getElementById("now_date").innerHTML = date;
+     var date = nowYear + "." + nowMonth + "." + nowDay;
+     document.getElementById("now_date").innerHTML = date + "  " + time;
   }
   setInterval('showClock2()',1000);
+
+$(document).ready(function(){
+  $('#calendar-box').fullCalendar({
+    defaultView: 'agendaDay',
+    events: '/date/json',
+    header: {
+      left: "today",
+      center: "prev,next",
+      right:  'agendaWeek,agendaDay',
+    },
+    nowindicator: true,
+    editable: true,
+  })
+});
 </script>
