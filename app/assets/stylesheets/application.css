@@ -8,7 +8,7 @@
 */
 
 body{
-    background-color: #FFF6cc;
+    background-color: rgb(251, 247, 217);
 }
 
 #main{
@@ -16,5 +16,5 @@ body{
 
 }
 #main h1{
-    font-weight: 300;
+  font-weight: 300;
 }

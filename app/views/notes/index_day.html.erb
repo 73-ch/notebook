@@ -1,3 +1,43 @@
-<div class="index_day">
-	<%= render "index_day" %>
+<div class="container" id="container">
+	<div class="row">
+		<div id="time_box" class="col-md-12">
+			<h1 id="now_date"></h1>
+		</div>
+		<div id="index_box" class="col-md-6">
+			<%= render "index_day" %>
+		</div>
+		<div id="calendar_box" class="col-md-6"></div>
+	</div>
 </div>
+<script type="text/javascript">
+function set2fig(num) {
+   var ret;
+  if( num < 10 ) { ret = "0" + num; }
+   else { ret = num; }
+   return ret;
+}
+function showClock2() {
+  var nowTime = new Date();
+  var nowYear = set2fig( nowTime.getFullYear() );
+  var nowMonth = set2fig( nowTime.getMonth() +1);
+  var nowDay = set2fig( nowTime.getDate() );
+  var nowHour = set2fig( nowTime.getHours() );
+  var nowMin = set2fig( nowTime.getMinutes() );
+  var time = nowHour + ":" + nowMin;
+  var date = nowYear + "." + nowMonth + "." + nowDay;
+  document.getElementById("now_date").innerHTML = date + "  " + time;
+}
+setInterval('showClock2()',1000);
+
+$(document).ready(function(){
+  $('#calendar_box').fullCalendar({
+    defaultView: 'agendaDay',
+    events: '/date/json',
+    header: false,
+    nowindicator: true,
+    editable: true,
+    height: ($(window).height() - 114) * 0.9,
+  })
+  $('.day_box').height(($(window).height() - 134) * 0.3)
+});
+</script>
