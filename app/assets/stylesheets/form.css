@@ -89,7 +89,7 @@ hr{
 	margin: 5px 0;
 }
 
-#datetimepicker{
+#start_time, #end_time{
 	background: none;
 	border: none;
 	outline: none;

@@ -20,12 +20,11 @@
         <%= f.range_field :importance, {:class => "range", :id => "range"} %>
       </div>
       <% if @type == "plan" %>
-      <div class="controls">
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD hh:mm' }, :class => 'form-control datetimepicker', :id => "datetimepicker", :placeholder => "Date" %>
-      </div>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD HH:mm' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY/MM/DD HH:mm' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
       <% elsif @type == 'schedule' %>
-        <%= f.date_select :start_time %>〜
-        <%= f.date_select :end_time %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
       <% end %>
       <br>
       カテゴリー
@@ -80,7 +79,8 @@
 
   }
 
-  $('#datetimepicker').datetimepicker();
+  $('#start_time,#end_time').datetimepicker({
+  });
 
 }());
 </script>

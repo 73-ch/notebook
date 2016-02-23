@@ -102,7 +102,7 @@ class NotesController < ApplicationController
         else
           @note_time = note
           break
-        end  
+        end
       end
     end 
     @notes_count = notes.count
