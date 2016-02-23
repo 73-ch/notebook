@@ -27,7 +27,7 @@
 
 #main{
 	box-sizing:border-box;
-	height: 100%;
+	height: calc();
 }
 .container{
 	box-sizing:border-box;
@@ -39,8 +39,13 @@
 }
 .day_box{
 	box-sizing:border-box;
-	background-color: #FFF6cc;
+	background-color: #fcf8e3;
 	padding: 5px;
 	margin: 5px;
+	border: 1px solid rgb(234, 234, 234);
+}
+
+.day_box h1{
+	text-align: center;
 }
 

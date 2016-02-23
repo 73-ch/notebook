@@ -41,9 +41,9 @@ class NotesController < ApplicationController
           else
             @note_time = note
             break
-          end  
+          end
         end
-      end 
+      end
       @notes_count = notes.count
       if @notes_count == 0
         @note2 = @notes_importance
@@ -77,7 +77,7 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find(params[:id]) 
+    @note = Note.find(params[:id])
   end
 
   def show

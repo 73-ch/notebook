@@ -34,9 +34,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    <%= javascript_include_tag "application" %>    
-
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script> -->
+    <%= javascript_include_tag "application" %>
 
   </head>
   <body>
@@ -87,7 +85,7 @@
     </ul>
   </header>
 
-      <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+  <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
   <div id="main">
     <%= yield %>

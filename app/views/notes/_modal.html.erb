@@ -20,15 +20,13 @@
         <%= f.range_field :importance, {:class => "range", :id => "range"} %>
       </div>
       <% if @type == "plan" %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD hh:mm' }, :class => 'form-control datetimepicker' %>
+      <div class="controls">
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD hh:mm' }, :class => 'form-control datetimepicker', :id => "datetimepicker", :placeholder => "Date" %>
+      </div>
       <% elsif @type == 'schedule' %>
         <%= f.date_select :start_time %>〜
         <%= f.date_select :end_time %>
       <% end %>
-      <br>
-      URL
-      <br>
-      <%= f.url_field :site_url %>
       <br>
       カテゴリー
       <br>
@@ -81,5 +79,8 @@
   function changeBoxSize(e){
 
   }
+
+  $('#datetimepicker').datetimepicker();
+
 }());
 </script>

@@ -12,7 +12,7 @@ class CreateNotes < ActiveRecord::Migration
       t.integer :category_id
       t.integer :progress, :default => 0
       t.boolean :done , :default => false
-      
+
       t.timestamps null: false
     end
   end
