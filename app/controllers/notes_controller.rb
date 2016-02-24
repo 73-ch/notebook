@@ -20,6 +20,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
+    logger.info("params[:start_time] //////  params[:end_time]")
     @note.start_time = DateTime.parse(params[:start_time])
     @note.end_time = DateTime.parse(params[:end_time])
     @note.save

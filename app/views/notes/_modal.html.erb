@@ -20,11 +20,11 @@
         <%= f.range_field :importance, {:class => "range", :id => "range"} %>
       </div>
       <% if @type == "plan" %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD HH:mm' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY/MM/DD HH:mm' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
       <% elsif @type == 'schedule' %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
       <% end %>
       <br>
       カテゴリー
