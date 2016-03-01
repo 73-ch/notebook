@@ -51,9 +51,9 @@
       </li>
       <li><%= link_to "note" ,"#" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "add plan" ,"/new/plan#{@source}", remote: true %></li>
-          <li class="dropmenu_li"><%= link_to "add schedule" ,"/new/schedule#{@source}", remote: true %></li>
-          <li class="dropmenu_li"><%= link_to "add memo" ,"/new/memo#{@source}", remote: true %></li>
+          <li class="dropmenu_li"><%= link_to "add plan" ,"/new/plan/#{@source}", remote: true %></li>
+          <li class="dropmenu_li"><%= link_to "add schedule" ,"/new/schedule/#{@source}", remote: true %></li>
+          <li class="dropmenu_li"><%= link_to "add memo" ,"/new/memo/#{@source}", remote: true %></li>
         </ul>
       </li>
       <li><%= link_to "index", "/new_message" %>

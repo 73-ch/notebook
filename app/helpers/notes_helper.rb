@@ -6,7 +6,7 @@ module NotesHelper
 	end
 
 	def done_creater
-		notes = Note.all
+		notes = Note.where(user_id: session[:user_id], done: false)
 		notes.each do |note|
 			if note.end_time
 				if note.note_type == 0

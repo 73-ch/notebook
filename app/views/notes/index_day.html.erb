@@ -3,10 +3,9 @@
 		<div id="time_box" class="col-md-12">
 			<h1 id="now_date"></h1>
 		</div>
-		<div id="index_box" class="col-md-6">
-			<%= render "index_day" %>
-		</div>
-		<div id="calendar_box" class="col-md-6"></div>
+    <div class="index_day">
+      <%= render "index_day" %>
+    </div>
 	</div>
 </div>
 <script type="text/javascript">
@@ -29,14 +28,4 @@ function showClock2() {
 }
 setInterval('showClock2()',1000);
 
-$(document).ready(function(){
-  $('#calendar_box').fullCalendar({
-    defaultView: 'agendaDay',
-    events: '/date/json',
-    header: false,
-    nowindicator: true,
-    editable: true,
-    height: $(window).height() * 0.8,
-  })
-});
 </script>

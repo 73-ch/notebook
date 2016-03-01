@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :login_checker
   before_filter :set_request_from
-  before_action :done_creater, only: [:index, :index_particle, :index_importance, :show, :edit]
+  before_action :done_creater, only: [:index, :index_particle, :index_importance, :index_day, :show, :edit]
   def new
     @type = params[:type]
     @source = params[:source]
@@ -20,13 +20,18 @@ class NotesController < ApplicationController
   def create
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
-    logger.info("params[:start_time] //////  params[:end_time]")
-    @note.start_time = DateTime.parse(params[:start_time])
-    @note.end_time = DateTime.parse(params[:end_time])
-    @note.save
-    source = params[:source]
-    case source
-    when index_manager
+    if @note.note_type == 1
+      @note.start_time = params[:note][:start_time]
+      @note.end_time = params[:note][:end_time]
+    else
+      @note.start_time = params[:note][:start_time]
+      @note.end_time = params[:note][:end_time]
+    end
+    logger.info(@note.start_time)
+    logger.info(@note.save.to_s)
+    @source = params[:note][:source]
+    case @source
+    when "index_manager"
       notes_all = Note.where(user_id: session[:user_id], done: false)
       @now_time = DateTime.now
       notes = []
@@ -66,13 +71,13 @@ class NotesController < ApplicationController
         @note3 = notes[2]
       end
       @categories = Category.all
-    when index_particle
+    when "index_particle"
       logger.info("case index_particle")
       @notes = Note.order("importance DESC").first(10)
-    when index_day
+    when "index_day"
       datetime = DateTime.now
       @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
-      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time + 1 >= ?", datetime, datetime)
       @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
     end
   end
@@ -105,7 +110,7 @@ class NotesController < ApplicationController
           break
         end
       end
-    end 
+    end
     @notes_count = notes.count
     if @notes_count == 0
       @note2 = @notes_importance
@@ -137,7 +142,7 @@ class NotesController < ApplicationController
   end
 
   def index_particle
-    @notes = Note.order("importance DESC").first(10)
+    @notes = Note.where(user_id: session[:user_id]).order("importance DESC").first(10)
     @source = "index_particle"
   end
 
@@ -147,12 +152,14 @@ class NotesController < ApplicationController
   end
   def index_day
     datetime = DateTime.now
+    logger.info "now time is #{datetime}"
     @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
     @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
-    @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
+    @memos = Note.where(user_id: session[:user_id], done: false, note_type: 2)
+    @source = "index_day"
   end
   def date_json
-    events = Note.where.not(note_type: 2)
+    events = Note.where(user_id: session[:user_id]).where.not(note_type: 2)
     @events = []
     events.each do |event|
       title = event.title
@@ -192,7 +199,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:note_type, :title, :content, :importance,  :category_id, :site_url)
+    params.require(:note).permit(:note_type, :title, :content, :importance, :category_id)
   end
 
   def set_request_from

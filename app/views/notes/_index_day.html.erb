@@ -1,44 +1,59 @@
-<div id="plans" class="day_box">
-	<h1>PLANS</h1>
-	<hr>
-	<% plan_count = @plans.count %>
-	<% if plan_count == 0 %>
-		<p>今日の予定はありません</p>
-	<% else %>
-		<ul>
-			<% @plans.each do |plan| %>
-				<li><%= plan.title %></li>
-			<% end %>
-		</ul>
-	<% end %>
-</div>
-<div id="schedule" class="day_box">
-	<% schedule_count = @schedules.count %>
-	<h1>SCHEDULES</h1>
-	<hr>
-	<% if schedule_count == 0 %>
-		<p>今日の日程はありません</p>
-	<% else %>
-		<ul>
-			<% @schedules.each do |schedule| %>
-				<br>
-				<li><%= schedule.title %></li>
-			<% end %>
-		</ul>
-	<% end %>
+<div id="index_box" class="col-md-6">
+	<div id="plans" class="day_box">
+		<h1>PLANS</h1>
+		<hr>
+		<% plan_count = @plans.count %>
+		<% if plan_count == 0 %>
+			<p>今日の予定はありません</p>
+		<% else %>
+			<ul>
+				<% @plans.each do |plan| %>
+					<li><%= plan.title %></li>
+				<% end %>
+			</ul>
+		<% end %>
 	</div>
-<div id="memo" class="day_box">
-	<% memo_count = @memos.count %>
-	<h1>MEMOS</h1>
-	<hr>
-	<% if memo_count == 0 %>
-		<p>メモはありません</p>
-	<% else %>
-		<ul>
-			<% @memos.each do |memo| %>
-				<br>
-				<li><%= memo.title %></li>
-			<% end %>
-		</ul>
-	<% end %>
+	<div id="schedule" class="day_box">
+		<% schedule_count = @schedules.count %>
+		<h1>SCHEDULES</h1>
+		<hr>
+		<% if schedule_count == 0 %>
+			<p>今日の日程はありません</p>
+		<% else %>
+			<ul>
+				<% @schedules.each do |schedule| %>
+					<br>
+					<li><%= schedule.title %></li>
+				<% end %>
+			</ul>
+		<% end %>
+		</div>
+	<div id="memo" class="day_box">
+		<% memo_count = @memos.count %>
+		<h1>MEMOS</h1>
+		<hr>
+		<% if memo_count == 0 %>
+			<p>メモはありません</p>
+		<% else %>
+			<ul>
+				<% @memos.each do |memo| %>
+					<br>
+					<li><%= memo.title %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
 </div>
+<div id="calendar_box" class="col-md-6"></div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#calendar_box').fullCalendar({
+    defaultView: 'agendaDay',
+    events: '/date/json',
+    header: false,
+    nowindicator: true,
+    editable: true,
+    height: $(window).height() * 0.8,
+  })
+});
+</script>

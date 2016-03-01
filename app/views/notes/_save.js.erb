@@ -1,5 +1,11 @@
 $("#product-modal").modal("hide")
-$(".index_manager").html("<%= escape_javascript(render 'index_manager') %>")
-$(".index_particle").html("<%= escape_javascript(render 'index_particle') %>")
-$(".index_day").html("<%= escape_javascript(render 'index_day') %>")
-$(".index_calender").html("<%= escape_javascript(render 'index_calender') %>")
+<% case @source %>
+<% when "index_manager" %>
+	$(".index_manager").html("<%= escape_javascript(render 'index_manager') %>")
+<% when "index_particle" %>
+	$(".index_particle").html("<%= escape_javascript(render 'index_particle') %>")
+<% when "index_day" %>
+	$(".index_day").html("<%= escape_javascript(render 'index_day') %>")
+<% when "index_calender" %>
+	$(".index_calender").html("<%= escape_javascript(render 'index_calender') %>")
+<% end %>
