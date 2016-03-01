@@ -20,12 +20,10 @@ class NotesController < ApplicationController
   def create
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
+    @note.start_time = params[:note][:start_time]
+    @note.end_time = params[:note][:end_time]
     if @note.note_type == 1
-      @note.start_time = params[:note][:start_time]
-      @note.end_time = params[:note][:end_time]
-    else
-      @note.start_time = params[:note][:start_time]
-      @note.end_time = params[:note][:end_time]
+      @note.end_time += 1.days - 1.seconds
     end
     logger.info(@note.start_time)
     logger.info(@note.save.to_s)
@@ -77,7 +75,7 @@ class NotesController < ApplicationController
     when "index_day"
       datetime = DateTime.now
       @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
-      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time + 1 >= ?", datetime, datetime)
+      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
     end
   end

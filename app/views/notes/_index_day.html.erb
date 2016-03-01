@@ -23,7 +23,7 @@
 			<ul>
 				<% @schedules.each do |schedule| %>
 					<br>
-					<li><%= schedule.title %></li>
+					<li><%= link_to schedule.title, note_path(schedule) %></li>
 				<% end %>
 			</ul>
 		<% end %>
