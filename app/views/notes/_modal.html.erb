@@ -27,12 +27,10 @@
         <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
       <% end %>
       <br>
-      カテゴリー
-      <br>
       <% if @categories == nil %>
         登録できるカテゴリーがありません！！
       <% else %>
-        <%= f.collection_select :category_id, @categories, :id, :name %>
+        <%= f.collection_select :category_id, @categories, :id, :name, :include_blank => "Category", :id => "category_select", :class => "category_select" %>
       <% end %>
       <br>
       <input type="reset"　value="リセット">

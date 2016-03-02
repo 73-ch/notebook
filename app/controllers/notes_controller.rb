@@ -77,6 +77,7 @@ class NotesController < ApplicationController
       @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
+    when "index_calender"
     end
   end
 
@@ -166,15 +167,17 @@ class NotesController < ApplicationController
       end_time = event.end_time
       if event.category
         color = event.category.color
+        text_color = event.category.opp_color
       else
         color = "#FFF"
+        text_color = "#262626"
       end
       if event.note_type = 1
         allDay = true
       else
         allDay = false
       end
-      @events.push(title: title, url: url, start: start, end: end_time, color: color, allDay: allDay)
+      @events.push(title: title, url: url, start: start, end: end_time, color: color, textColor: text_color, allDay: allDay)
     end
     render :json => @events
   end

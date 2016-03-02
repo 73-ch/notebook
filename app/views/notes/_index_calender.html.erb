@@ -10,6 +10,20 @@ $(document).ready(function() {
     	},
     	 nowIndicator: false,
     	 editable: true,
+         height: $(window).height(),
     })
 });
+$('#product-modal').on("loaded.bs.modal", function(e){
+    $('#calendar').fullCalendar({
+         events: '/date/json',
+         header: {
+            left: "today",
+            center: "prev,next",
+            right:  'month,agendaWeek,agendaDay',
+        },
+         nowIndicator: false,
+         editable: true,
+         height: $(window).height(),
+    })
+})
 </script>

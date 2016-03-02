@@ -6,6 +6,7 @@ class CreateCategories < ActiveRecord::Migration
       t.integer :user_id
       t.integer :progress
       t.string :color
+      t.string :opp_color
 
       t.timestamps null: false
     end

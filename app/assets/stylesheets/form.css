@@ -1,3 +1,14 @@
+input, button, textarea, select {
+	background: none;
+	margin: 0;
+	border-radius: 0;
+	border: none;
+	outline: none;
+	padding: 0;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
 .modal-dialog{
 	width: 40%;
 }
@@ -49,11 +60,7 @@ hr{
 
 .textarea{
 	box-sizing:border-box;
-	background: none;
-	border: none;
-	outline: none;
 	width: 100%;
-	padding: 0;
 	resize: none;
 	background: #FFF6cc -webkit-gradient(
     linear,
@@ -104,6 +111,11 @@ hr{
   font-size: 30px;
   padding: 0;
 	height: 100%;
+}
+
+.category_select option{
+	color: #999;
+  font-family: "CODE Light", "truetype";
 }
 
 

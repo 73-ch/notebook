@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151111140416) do
     t.integer  "user_id"
     t.integer  "progress"
     t.string   "color"
+    t.string   "opp_color"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

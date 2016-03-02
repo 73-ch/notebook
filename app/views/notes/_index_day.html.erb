@@ -1,18 +1,4 @@
 <div id="index_box" class="col-md-6">
-	<div id="plans" class="day_box">
-		<h1>PLANS</h1>
-		<hr>
-		<% plan_count = @plans.count %>
-		<% if plan_count == 0 %>
-			<p>今日の予定はありません</p>
-		<% else %>
-			<ul>
-				<% @plans.each do |plan| %>
-					<li><%= plan.title %></li>
-				<% end %>
-			</ul>
-		<% end %>
-	</div>
 	<div id="schedule" class="day_box">
 		<% schedule_count = @schedules.count %>
 		<h1>SCHEDULES</h1>
@@ -27,7 +13,22 @@
 				<% end %>
 			</ul>
 		<% end %>
-		</div>
+	</div>
+	<div id="plans" class="day_box">
+		<h1>PLANS</h1>
+		<hr>
+		<% plan_count = @plans.count %>
+		<% if plan_count == 0 %>
+			<p>今日の予定はありません</p>
+		<% else %>
+			<ul>
+				<% @plans.each do |plan| %>
+					<br>
+					<li><%= link_to plan.title, note_path(plan) %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
 	<div id="memo" class="day_box">
 		<% memo_count = @memos.count %>
 		<h1>MEMOS</h1>
@@ -38,7 +39,7 @@
 			<ul>
 				<% @memos.each do |memo| %>
 					<br>
-					<li><%= memo.title %></li>
+					<li><%= link_to memo.title, note_path(memo) %></li>
 				<% end %>
 			</ul>
 		<% end %>
