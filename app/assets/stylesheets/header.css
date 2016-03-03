@@ -1,25 +1,27 @@
 header {
-    background-color: #6c3116;
-    border-bottom: 3px solid #5e2a13;
-    border-top: 1px solid rgba(255,255,255,0.6);
-    height: 42px;
-    top: 0;
-    width:100%;
-    position:fixed;
-    z-index: 100;
-    margin:none;
+  background-color: #6c3116;
+  border-bottom: 3px solid #5e2a13;
+  border-top: 1px solid rgba(255,255,255,0.6);
+  height: 42px;
+  top: 0;
+  width:100%;
+  position:fixed;
+  z-index: 100;
+  margin:none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
 }
 
 header h1 {
-    color: #e2916c;
-    text-shadow: 0 2px 2px rgba(0,0,0,0.2);
-    line-height: 30px;
-    float: left;
+  color: #e2916c;
+  text-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  line-height: 30px;
+  float: left;
 }
 
 #nav{
-    width: 960px;
-    height: 42px;
+  width: 960px;
+  height: 42px;
 }
 
 .dropmenu{

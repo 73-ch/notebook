@@ -12,29 +12,26 @@
       <% end %>
       <%= f.hidden_field :source, :value => @source %>
 
-      <%= f.text_field :title, {:placeholder => "add #{@type}", :class => "title"} %>
+      <!-- form content -->
+      <%= f.text_field :title, {:placeholder => "add #{@type}", :class => "title form_parts"} %>
       <hr>
-      <%= f.text_area :content, {:id => "textarea", :class => "textarea", :placeholder => "content"} %>
+      <%= f.text_area :content, {:id => "textarea", :class => "textarea form_parts", :placeholder => "content"} %>
       <br>
       <div id="importance_range">
-        <%= f.range_field :importance, {:class => "range", :id => "range"} %>
+        <%= f.range_field :importance, :class => "range form_parts", :id => "range" %>
       </div>
       <% if @type == "plan" %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
       <% elsif @type == 'schedule' %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker', :id => "start_time", :placeholder => "start time" %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker', :id => "end_time", :placeholder => "end time" %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
       <% end %>
       <br>
-      <% if @categories == nil %>
-        登録できるカテゴリーがありません！！
-      <% else %>
-        <%= f.collection_select :category_id, @categories, :id, :name, :include_blank => "Category", :id => "category_select", :class => "category_select" %>
-      <% end %>
+      <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "category"}, {:id => "category_select", :class => "category_select form_parts"} %>
       <br>
-      <input type="reset"　value="リセット">
-      <%= f.submit "投稿" %>
+      <input type="reset" value="reset" class="form_button">
+      <%= f.submit "add", :class => "form_button add_button" %>
     <% end %>
     </div>
     </div>
