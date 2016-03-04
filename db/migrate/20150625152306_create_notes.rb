@@ -7,8 +7,8 @@ class CreateNotes < ActiveRecord::Migration
       t.integer :user_id
       t.datetime :start_time
       t.datetime :end_time
+      t.string :routine
       t.integer :note_type
-      t.string :site_url
       t.integer :category_id
       t.integer :progress, :default => 0
       t.boolean :done , :default => false

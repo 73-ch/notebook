@@ -7,6 +7,8 @@
         <%= f.hidden_field :note_type , :value => "0"%>
       <% elsif @type == "schedule" %>
         <%= f.hidden_field :note_type , :value => "1"%>
+      <% elsif @type == "routine" %>
+        <%= f.hidden_field :note_type , :value => "3"%>
       <% else %>
         <%= f.hidden_field :note_type , :value => "2"%>
       <% end %>
@@ -26,6 +28,14 @@
       <% elsif @type == 'schedule' %>
         <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
         <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
+      <% elsif @type == 'routine' %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sun" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "mon" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "tue" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "wed" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "thu" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "fly" %>
+        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sat" %>
       <% end %>
       <br>
       <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "category"}, {:id => "category_select", :class => "category_select form_parts"} %>

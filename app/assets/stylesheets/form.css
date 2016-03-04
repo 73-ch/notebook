@@ -150,6 +150,12 @@ hr{
 	font-size: 2em;
 }
 
+.routine{
+	width: 14%;
+	height: 20px;
+	background-color: #fff;
+}
+
 
 /*.range::-webkit-slider-thumb{
   -webkit-appearance: none;
