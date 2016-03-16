@@ -5,6 +5,10 @@ class NotesController < ApplicationController
   def new
     @type = params[:type]
     @source = params[:source]
+    if params[:date]
+      logger.info('read')
+      @start_date = params[:date]
+    end
     @note = Note.new
     categories = Category.where(user_id: session[:user_id])
     @categories = categories.all
@@ -143,6 +147,7 @@ class NotesController < ApplicationController
   end
 
   def index_calender
+    @source = "index_calender"
   end
 
   def index_particle

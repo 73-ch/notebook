@@ -30,16 +30,12 @@
       期間
       <br>
       <% if @type == "plan" %>
-        <%= f.datetime_select :start_time %>〜
+        <%= f.datetime_select :start_time %>
         <%= f.datetime_select :end_time %>
       <% elsif @type == 'schedule' %>
-        <%= f.date_select :start_time %>〜
+        <%= f.date_select :start_time %>
         <%= f.date_select :end_time %>
       <% end %>
-      <br>
-      URL
-      <br>
-      <%= f.url_field :site_url %>
       <br>
       カテゴリー
       <br>

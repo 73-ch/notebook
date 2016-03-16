@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :notes
   get '/new/:type/:source' => 'notes#new'
   post "/notes" => "notes#create"
+  get "show_modal" => "notes#new", defaults: {format: "js"}
   delete "/note_destroy" => 'notes#destroy'
 
   get '/index_manager' => 'notes#index_manager'

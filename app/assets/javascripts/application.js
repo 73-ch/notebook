@@ -11,5 +11,6 @@
 //= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require turbolinks
+//= require jquery-ui/draggable
 //= require_tree .
 

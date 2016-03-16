@@ -7,7 +7,6 @@ class CreateNotes < ActiveRecord::Migration
       t.integer :user_id
       t.datetime :start_time
       t.datetime :end_time
-      t.string :routine
       t.integer :note_type
       t.integer :category_id
       t.integer :progress, :default => 0

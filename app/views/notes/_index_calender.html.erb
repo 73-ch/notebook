@@ -1,29 +1,41 @@
 <div id="calendar"></div>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#calendar').fullCalendar({
-    	 events: '/date/json',
-    	 header: {
-	    	left: "today",
-	    	center: "prev,next",
-	    	right:  'month,agendaWeek,agendaDay',
-    	},
-    	 nowIndicator: false,
-    	 editable: true,
-         height: $(window).height(),
-    })
+  var drop_success = false;
+  $('#calendar').fullCalendar({
+   	events: '/date/json',
+    header: {
+	    left: "today",
+	    center: "prev,next",
+	    right:  'month,agendaWeek,agendaDay',
+    },
+    nowIndicator: false,
+    editable: true,
+    height: $(window).height(),
+    droppable: true,
+    drop: function(date) {
+     	$.ajax({
+     		type: "GET",
+				url: "/show_modal?type=schedule&&source=index_calendar&&date=" + date.format()
+     	})
+    }
+  })
+  $('#new_calendar').draggable({
+    revert: true,
+    revertDuration: 0
+  });
 });
 $('#product-modal').on("loaded.bs.modal", function(e){
-    $('#calendar').fullCalendar({
-         events: '/date/json',
-         header: {
-            left: "today",
-            center: "prev,next",
-            right:  'month,agendaWeek,agendaDay',
-        },
-         nowIndicator: false,
-         editable: true,
-         height: $(window).height(),
-    })
+  $('#calendar').fullCalendar({
+    events: '/date/json',
+    header: {
+      left: "today",
+      center: "prev,next",
+      right:  'month,agendaWeek,agendaDay',
+    },
+    nowIndicator: false,
+    editable: true,
+    height: $(window).height(),
+  })
 })
 </script>
