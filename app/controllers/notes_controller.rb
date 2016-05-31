@@ -5,9 +5,16 @@ class NotesController < ApplicationController
   def new
     @type = params[:type]
     @source = params[:source]
+    logger.info "@type is #{@type}"
     if params[:date]
       logger.info('read')
-      @start_date = params[:date]
+      @date = params[:date]
+    else
+      if @type == "plan"
+        @date = DateTime.now
+      elsif @type == "schedule"
+        @date = DateTime.now
+      end
     end
     @note = Note.new
     categories = Category.where(user_id: session[:user_id])
@@ -25,6 +32,7 @@ class NotesController < ApplicationController
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
     @note.start_time = params[:note][:start_time]
+    logger.info @note.start_time
     @note.end_time = params[:note][:end_time]
     if @note.note_type == 1
       @note.end_time += 1.days - 1.seconds

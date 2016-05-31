@@ -23,15 +23,16 @@
         <%= f.range_field :importance, :class => "range form_parts", :id => "range" %>
       </div>
       <% if @type == "plan" %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
+        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @date %>
+        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time", :value => @date %>
       <% elsif @type == 'schedule' %>
-        <% if @start_date %>
-          <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @start_date %>
+        <% if @date %>
+          <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @date %>
+          <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time", :value => @date %>
         <% else %>
           <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
+          <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
         <% end %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
       <% elsif @type == 'routine' %>
         <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sun" %>
         <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "mon" %>
