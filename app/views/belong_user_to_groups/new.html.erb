@@ -1,6 +1,0 @@
-<%= form_for(@belong_user_to_group) do |f|%>
-	グループ
-	<br>
-	<%= f.collection_select :group_id, @groups, :id, :name %>
-	<%= f.submit "グループに参加" %>
-<% end %>

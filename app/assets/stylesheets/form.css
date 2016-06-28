@@ -123,7 +123,7 @@ hr{
 	float: right;
 }
 
-.title::-webkit-input-placeholder, .datetimepicker::-webkit-input-placeholder{
+.title::-webkit-input-placeholder, .datetimepicker::-webkit-input-placeholder, .process::-webkit-input-placeholder{
   color: #999;
   font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;

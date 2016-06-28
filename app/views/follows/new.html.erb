@@ -1,6 +1,0 @@
-<%= form_for(@follow) do |f|%>
-	<%= f.collection_select :followed_id, @users, :id, :name %>
-	<br>
-	<input type="reset"　value="リセット">
-	<%= f.submit "フォロー" %>
-<% end %>

@@ -1,0 +1,9 @@
+#calendar_box{
+	display: flex;
+	z-index: 1;
+}
+#tool_box{
+	position: fixed;
+	right: 0px;
+	z-index: 2;
+}

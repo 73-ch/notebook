@@ -1,9 +1,0 @@
-<% @invites.each do |invite| %>
-	<%= invite.invite_user %>さんに招待されています
-	<%= form_for(@invite, :url => "/belong_user_to_groups") do |f| %>
-		<%= f.hidden_field :user_id, value: invite.group_id %>
-		<%= f.hidden_field :group_id, value: invite.invited_user %>
-		<%= f.submit "参加する" %>
-		<%= link_to "キャンセル", "destroy/#{invite.id}",:method => :delete %>
-	<% end %>
-<% end %>

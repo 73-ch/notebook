@@ -32,13 +32,12 @@ class NotesController < ApplicationController
     @note = Note.create(note_params)
     @note.user_id = session[:user_id]
     @note.start_time = params[:note][:start_time]
-    logger.info @note.start_time
     @note.end_time = params[:note][:end_time]
     if @note.note_type == 1
       @note.end_time += 1.days - 1.seconds
     end
-    logger.info(@note.start_time)
-    logger.info(@note.save.to_s)
+
+
     @source = params[:note][:source]
     case @source
     when "index_manager"
@@ -100,6 +99,13 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
+    @categories = Category.where(user_id: session[:user_id])
+  end
+
+  def update
+    @note = Note.find(params[:id])
+    @note.update(note_params)
+    redirect_to "/index_calender"
   end
 
   def show

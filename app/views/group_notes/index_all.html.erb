@@ -1,9 +1,0 @@
-<h2>ノート一覧</h2>
-<hr>
-<% @group_notes.each do |group_note| %>
-	<%= link_to "/group_note/#{group_note.id}" do %>
-		<h3><%= group_note.title %></h3>
-		<%= link_to "削除", "/../group_note/destroy/#{group_note.id}", :method => :delete %>
-	<% end %>
-	<hr>
-<% end %>

@@ -1,25 +1,46 @@
-<h1>メモの編集</h1>
 <div id="form">
-<%= form_for(@note) do |f|%>
-	タイトル
-	<br>
-	<%= f.text_field :title %>
-	<br>
-	内容
-	<br>
-	<%= f.text_area :content %>
-	<br>
-	重要度
-	<br>
-	<%= f.range_field :importance %>
-	<br>
-	期間
-	<br>
-	<%= f.datetime_select :start_time %>〜
-	<%= f.datetime_select :end_time %>
-	<br>
-	<input type="reset"　value="リセット">
-	<%= f.submit "投稿" %>
-<% end %>
-<input type="button" onClick='history.back();' value="戻る">
+  <div id="content">
+   	<%= form_for(@note) do |f|%>
+      <% if @note.note_type == 0 %>
+        <h1>edit  plan</h1>
+      <% elsif @note.note_type == 1 %>
+        <h1>edit  shedule</h1>
+      <% else %>
+        <h1>edit  memo</h1>
+      <% end %>
+      タイトル
+      <br>
+      <%= f.text_field :title %>
+      <br>
+      内容
+      <br>
+      <%= f.text_area :content %>
+      <br>
+      重要度
+      <br>
+      <%= f.range_field :importance %>
+      <br>
+      期間
+      <br>
+      <% if@note.note_type == 0 %>
+        <%= f.datetime_select :start_time %>
+        <%= f.datetime_select :end_time %>
+      <% elsif @note.note_type == 1 %>
+        <%= f.date_select :start_time %>
+        <%= f.date_select :end_time %>
+      <% end %>
+      <br>
+      カテゴリー
+      <br>
+      <% if @categories == nil %>
+        登録できるカテゴリーがありません！！
+      <% else %>
+        <%= f.collection_select :category_id, @categories, :id, :name %>
+      <% end %>
+      <br>
+      <input type="reset"　value="リセット">
+      <%= f.submit "投稿" %>
+    <% end %>
+		<input type="button" onClick='history.back();' value="戻る">
+	</div>
 </div>

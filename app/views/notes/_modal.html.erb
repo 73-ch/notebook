@@ -4,9 +4,9 @@
     <div class="form">
     <%= form_for(@note, remote: true) do |f|%>
       <% if @type == "plan" %>
-        <%= f.hidden_field :note_type , :value => "0"%>
+        <%= f.hidden_field :note_type , value: "0"%>
       <% elsif @type == "schedule" %>
-        <%= f.hidden_field :note_type , :value => "1"%>
+        <%= f.hidden_field :note_type , value: "1"%>
       <% elsif @type == "routine" %>
         <%= f.hidden_field :note_type , :value => "3"%>
       <% else %>
@@ -41,6 +41,10 @@
         <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "thu" %>
         <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "fly" %>
         <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sat" %>
+      <% end %>
+      <br>
+      <%= f.fields_for :processes do |p_f| %>
+        <%= p_f.text_field :title, :placeholder => "add process", :class => 'form_parts process', :id => "process" %>
       <% end %>
       <br>
       <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "category"}, {:id => "category_select", :class => "category_select form_parts"} %>

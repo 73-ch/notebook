@@ -54,14 +54,13 @@ function urlValidity(group,url){
     var
 	    url = "/notes/<%= note.id %>",
 	    title = "<%= note.title %>",
-	    importance = <%= note.importance %>,  	
-	    color;
+	    importance = <%= note.importance %>,
       <% if note.category %>
-      	color = <%= note.category.color %>
+      	color = "<%= note.category.color %>";
       <% else %>
       	color = '#'+Math.floor(Math.random()*16777215).toString(16);
       <% end %>
-      createCircle(url,title,color,importance);
+     createCircle(url,title,color,importance);
   <% end %>
 })();
 </script>
