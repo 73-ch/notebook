@@ -42,11 +42,9 @@
   <header>
     <ul id="main_nav" class="dropmenu">
       <% if signed_in? %>
-      <li><%= link_to 'groups', groups_path %>
+      <li><%= link_to 'category', "#" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "create group", "/group/new" %></li>
-          <li class="dropmenu_li"><%= link_to "groups", "/groups" %></li>
-          <li class="dropmenu_li"><%= link_to "invites", "/invite/index"%></li>
+          <li class="dropmenu_li"><%= link_to "create group", "#" %></li>
         </ul>
       </li>
       <li><%= link_to "note" ,"#" %>
@@ -60,7 +58,6 @@
       <li><%= link_to "index", "/new_message" %>
         <ul>
           <li class="dropmenu_li"><%= link_to "manager", "/index_manager" %></li>
-          <li class="dropmenu_li"><%= link_to "particle", "/index_particle" %></li>
           <li class="dropmenu_li"><%= link_to "calender", "/index_calender" %></li>
           <li class="dropmenu_li"><%= link_to "all", "/index_all" %></li>
           <li class="dropmenu_li"><%= link_to "day", "/index_day" %></li>

@@ -2,13 +2,6 @@ class User < ActiveRecord::Base
   before_save { email.downcase! }
   has_many :notes
   has_many :categories
-  has_many :messages
-  has_many :follows
-  belongs_to :group
-  has_many :belong_user_to_groups
-  has_many :invite_groups
-  has_many :group_notes
-  has_many :group_dategories
   has_many :note_processes
 
   has_secure_password

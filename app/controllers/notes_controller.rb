@@ -40,49 +40,6 @@ class NotesController < ApplicationController
 
     @source = params[:note][:source]
     case @source
-    when "index_manager"
-      notes_all = Note.where(user_id: session[:user_id], done: false)
-      @now_time = DateTime.now
-      notes = []
-      @notes = notes_all.order("start_time ASC")
-      @notes_importance = notes_all.order("importance DESC").first
-      @notes.each do |note|
-        if note.start_time
-          if note.start_time - 2.days <= @now_time
-            notes.push(note)
-            if notes.count == 3
-              break
-            end
-          else
-            @note_time = note
-            break
-          end
-        end
-      end
-      @notes_count = notes.count
-      if @notes_count == 0
-        @note2 = @notes_importance
-        @note3 = @note_time
-      end
-      if @notes_count == 1
-        @note1 = notes[0]
-        @note2 = @notes_importance
-        @note3 = @note_time
-      end
-      if @notes_count == 2
-        @note1 = notes[0]
-        @note2 = notes[1]
-        @note3 = @notes_importance
-      end
-      if @notes_count == 3
-        @note1 = notes[0]
-        @note2 = notes[1]
-        @note3 = notes[2]
-      end
-      @categories = Category.all
-    when "index_particle"
-      logger.info("case index_particle")
-      @notes = Note.order("importance DESC").first(10)
     when "index_day"
       datetime = DateTime.now
       @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
@@ -114,48 +71,6 @@ class NotesController < ApplicationController
     @note_processes = NoteProcess.where(note_id: params[:id])
   end
 
-  def index_manager
-    @now_time = DateTime.now
-    notes_all = Note.where(user_id: session[:user_id], done: false)
-    notes = []
-    @notes = notes_all.order("start_time ASC")
-    @notes_importance = notes_all.order("importance DESC").first
-    @notes.each do |note|
-      if note.start_time
-        if note.start_time - 2.days <= @now_time
-          notes.push(note)
-          if notes.count == 3
-            break
-          end
-        else
-          @note_time = note
-          break
-        end
-      end
-    end
-    @notes_count = notes.count
-    if @notes_count == 0
-      @note2 = @notes_importance
-      @note3 = @note_time
-    end
-    if @notes_count == 1
-      @note1 = notes[0]
-      @note2 = @notes_importance
-      @note3 = @note_time
-    end
-    if @notes_count == 2
-      @note1 = notes[0]
-      @note2 = notes[1]
-      @note3 = @notes_importance
-    end
-    if @notes_count == 3
-      @note1 = notes[0]
-      @note2 = notes[1]
-      @note3 = notes[2]
-    end
-    @categories = Category.all
-  end
-
   def index_all
     @notes = Note.where(user_id: session[:user_id])
   end
@@ -164,15 +79,6 @@ class NotesController < ApplicationController
     @source = "index_calender"
   end
 
-  def index_particle
-    @notes = Note.where(user_id: session[:user_id]).order("importance DESC").first(10)
-    @source = "index_particle"
-  end
-
-  def index_importance
-    notes = Note.where(user_id: session[:user_id], done: false)
-    @notes = notes.order("importance DESC")
-  end
   def index_day
     datetime = DateTime.now
     logger.info "now time is #{datetime}"
@@ -207,22 +113,6 @@ class NotesController < ApplicationController
         allDay = false
       end
       @events.push(title: title, url: url, start: start, end: end_time, color: color, textColor: text_color, allDay: allDay)
-    end
-    render :json => @events
-  end
-  def particle_json
-    events = Note.order("importance DESC").first(10)
-    @events = []
-    events.each do |event|
-      title = event.title
-      url = "/notes/#{event.id}"
-      importance = event.importance
-      if event.category
-        color = event.category.color
-      else
-        color = nil
-      end
-      @events.push(title: title, url: url, importance: importance, color: color)
     end
     render :json => @events
   end
