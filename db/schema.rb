@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151111140416) do
 
-  create_table "belong_user_to_groups", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_type"
@@ -29,69 +22,6 @@ ActiveRecord::Schema.define(version: 20151111140416) do
     t.string   "opp_color"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "group_categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "group_notes", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "importance"
-    t.integer  "user_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "note_type"
-    t.string   "site_url"
-    t.integer  "category_id"
-    t.integer  "group_id"
-    t.boolean  "done",        default: false
-    t.integer  "progress",    default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "invite_groups", force: :cascade do |t|
-    t.integer  "invite_user"
-    t.integer  "invited_user"
-    t.integer  "group_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "importance"
-    t.integer  "user_id"
-    t.integer  "for_user"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "message_type"
-    t.string   "site_urls"
-    t.boolean  "done",         default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
   end
 
   create_table "note_processes", force: :cascade do |t|
@@ -110,7 +40,6 @@ ActiveRecord::Schema.define(version: 20151111140416) do
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string   "routine"
     t.integer  "note_type"
     t.integer  "category_id"
     t.integer  "progress",    default: 0
