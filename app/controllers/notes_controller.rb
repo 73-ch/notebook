@@ -36,6 +36,7 @@ class NotesController < ApplicationController
     if @note.note_type == 1
       @note.end_time += 1.days - 1.seconds
     end
+    @note.save
 
 
     @source = params[:note][:source]

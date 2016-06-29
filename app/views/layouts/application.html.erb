@@ -42,9 +42,9 @@
   <header>
     <ul id="main_nav" class="dropmenu">
       <% if signed_in? %>
-      <li><%= link_to 'category', "#" %>
+      <li><%= link_to 'category', "" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "create group", "#" %></li>
+          <li class="dropmenu_li"><%= link_to "create group", "category/new/" %></li>
         </ul>
       </li>
       <li><%= link_to "note" ,"#" %>
@@ -52,12 +52,10 @@
           <li class="dropmenu_li"><%= link_to "add plan" ,"/new/plan/#{@source}", remote: true %></li>
           <li class="dropmenu_li"><%= link_to "add schedule" ,"/new/schedule/#{@source}", remote: true %></li>
           <li class="dropmenu_li"><%= link_to "add memo" ,"/new/memo/#{@source}", remote: true %></li>
-          <li class="dropmenu_li"><%= link_to "add routine" ,"/new/routine/#{@source}", remote: true %></li>
         </ul>
       </li>
-      <li><%= link_to "index", "/new_message" %>
+      <li><%= link_to "index", "/#" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "manager", "/index_manager" %></li>
           <li class="dropmenu_li"><%= link_to "calender", "/index_calender" %></li>
           <li class="dropmenu_li"><%= link_to "all", "/index_all" %></li>
           <li class="dropmenu_li"><%= link_to "day", "/index_day" %></li>

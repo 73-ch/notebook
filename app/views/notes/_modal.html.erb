@@ -33,14 +33,6 @@
           <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
           <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
         <% end %>
-      <% elsif @type == 'routine' %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sun" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "mon" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "tue" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "wed" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "thu" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "fly" %>
-        <%= f.check_box :routine, :checked_value => "1", :unchecked_value => "0", :class => "routine", :id => "sat" %>
       <% end %>
       <br>
       <%= f.fields_for :processes do |p_f| %>
