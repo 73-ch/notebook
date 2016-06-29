@@ -44,19 +44,6 @@
 			</ul>
 		<% end %>
 	</div>
-	<% daily_routine_count = @routines.count %>
-	<% if daily_routine_count > 0 %>
-		<div id="daily_routine" class="day_box">
-			<h1>DAILY ROUTINES</h1>
-			<hr>
-			<ul>
-			<% @daily_routine.each do |daily_routine| %>
-				<br>
-				<li><%= link_to daily_routine.title, note_path(daily_routine) %></li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
 </div>
 <div id="calendar_box" class="col-md-6"></div>
 <script type="text/javascript">

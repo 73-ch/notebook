@@ -7,8 +7,6 @@
         <%= f.hidden_field :note_type , value: "0"%>
       <% elsif @type == "schedule" %>
         <%= f.hidden_field :note_type , value: "1"%>
-      <% elsif @type == "routine" %>
-        <%= f.hidden_field :note_type , :value => "3"%>
       <% else %>
         <%= f.hidden_field :note_type , :value => "2"%>
       <% end %>

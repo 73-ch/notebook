@@ -46,11 +46,6 @@ class NotesController < ApplicationController
       @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
-      routines = Note.where(user_id:session[:user_id], done: false, note_type: 3)
-      @routines = []
-      routines.each do |routine|
-        @routine.push(routine) if routine.routine.index(Date.today.wday)
-      end
     when "index_calender"
     end
   end
@@ -87,11 +82,6 @@ class NotesController < ApplicationController
     @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
     @memos = Note.where(user_id: session[:user_id], done: false, note_type: 2)
     @source = "index_day"
-    routines = Note.where(user_id:session[:user_id], done: false, note_type: 3)
-    @routines = []
-    routines.each do |routine|
-      @routine.push(routine) if routine.routine.index(Date.today.wday)
-    end
   end
   def date_json
     events = Note.where(user_id: session[:user_id]).where.not(note_type: 2)
