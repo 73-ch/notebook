@@ -17,6 +17,7 @@ class NotesController < ApplicationController
       end
     end
     @note = Note.new
+    @note.note_processes.build
     categories = Category.where(user_id: session[:user_id])
     @categories = categories.all
     @notes = Note.where(user_id: session[:user_id], done: false)
@@ -30,12 +31,12 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.create(note_params)
-    @note.user_id = session[:user_id]
     @note.start_time = params[:note][:start_time]
     @note.end_time = params[:note][:end_time]
     if @note.note_type == 1
       @note.end_time += 1.days - 1.seconds
     end
+    logger.info(@note.note_processes)
     @note.save
 
 
@@ -110,7 +111,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.require(:note).permit(:note_type, :title, :content, :importance, :category_id)
+    params.require(:note).permit(:note_type, :title, :content, :importance, :category_id, note_processes_attributes:[:title, :note_id, :user_id]).merge(user_id: current_user.id)
   end
 
   def set_request_from

@@ -33,8 +33,8 @@
         <% end %>
       <% end %>
       <br>
-      <%= f.fields_for :processes do |p_f| %>
-        <%= p_f.text_field :title, :placeholder => "add process", :class => 'form_parts process', :id => "process" %>
+      <%= f.fields_for :note_processes do |p_f| %>
+        <%= render "note_process_fields", f: p_f %>
       <% end %>
       <br>
       <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "category"}, {:id => "category_select", :class => "category_select form_parts"} %>
