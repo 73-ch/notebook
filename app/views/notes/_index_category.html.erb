@@ -1,0 +1,25 @@
+<% @categories.each do |c| %>
+	<div class="category_box container" style="background-color: <%= c.color%>;">
+		<h1><%= c.name %></h1><br/>
+		<% if @notes[c.id].count == 0 %>
+			<h5>Note is nothing.</h5>
+		<% elsif @notes[c.id].count <= 5 %>
+			<% @notes[c.id].each do |note| %>
+				<div class="category_note col-md-2">
+					<h5><%= link_to note["title"], "notes/#{note['id']}" %></h5><br/>
+					<p><%= note["content"] %></p><br/>
+				</div>
+			<% end %>
+		<% else %>
+			<% @notes[c.id].first(5).each do |note| %>
+				<div class="category_note col-md-2">
+					<h5><%= link_to note["title"], "notes/#{note['id']}" %></h5><br/>
+					<p><%= note["content"] %></p><br/>
+				</div>
+			<% end %>
+			<div class="see_more col-md-1">
+				<%= link_to "see more", "category/#{c.id}" %>
+			</div>
+		<% end %>
+	</div>
+<% end %>

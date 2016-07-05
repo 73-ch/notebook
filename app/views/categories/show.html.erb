@@ -1,10 +1,13 @@
-<%= @category.name %>
-<br>
-<% @notes.each do |note| %>
-	<%= link_to (note) do %>
-	<%= note.title %>
-	<br>
+<div class="category_notes container">
+	<h1><%= @category.name %></h1>
+	<% @notes.each do |note| %>
+		<div class="col-md-3 note">
+			<%= link_to (note) do %>
+				<h5><%= note.title %></h5>
+				<br>
+				<p><%= note.content %></p>
+			<% end %>
+		</div>
 	<% end %>
-<% end %>
-
-<%= link_to '削除', category_destroy_path(id: @category.id) ,:method => :delete %>
+	<%= link_to '削除', category_destroy_path(id: @category.id) ,:method => :delete %>
+</div>

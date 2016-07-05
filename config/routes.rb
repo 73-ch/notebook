@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/index_all' => 'notes#index_all'
   get "/index_calender" => "notes#index_calender"
   get "/index_day" => "notes#index_day"
+  get "/index_category" => "notes#index_category"
 
   get '/date/json' => 'notes#date_json'
   get '/particle/json' => 'notes#particle_json'

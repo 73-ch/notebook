@@ -44,7 +44,7 @@
       <% if signed_in? %>
       <li><%= link_to 'category', "" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "create group", "category/new/" %></li>
+          <li class="dropmenu_li"><%= link_to "create category", "category/new/0" %></li>
         </ul>
       </li>
       <li><%= link_to "note" ,"#" %>
@@ -59,7 +59,7 @@
           <li class="dropmenu_li"><%= link_to "calender", "/index_calender" %></li>
           <li class="dropmenu_li"><%= link_to "all", "/index_all" %></li>
           <li class="dropmenu_li"><%= link_to "day", "/index_day" %></li>
-          <li></li>
+          <li class="dropmenu_li"><%= link_to "category", "/index_category" %></li>
         </ul>
       </li>
       <li><%= link_to "account", "#"%>

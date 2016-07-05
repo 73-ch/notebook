@@ -84,6 +84,16 @@ class NotesController < ApplicationController
     @memos = Note.where(user_id: session[:user_id], done: false, note_type: 2)
     @source = "index_day"
   end
+
+  def index_category
+    notes = Note.where(user_id: session[:user_id])
+    @categories = Category.where(user_id: session[:user_id])
+    @notes = {}
+    @categories.each do |c|
+      @notes[c.id] = JSON.parse(notes.where(category_id: c.id).to_json)
+    end
+  end
+
   def date_json
     events = Note.where(user_id: session[:user_id]).where.not(note_type: 2)
     @events = []
