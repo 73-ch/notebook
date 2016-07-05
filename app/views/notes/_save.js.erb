@@ -8,4 +8,6 @@ $("#product-modal").modal("hide")
 	$(".index_day").html("<%= escape_javascript(render 'index_day') %>")
 <% when "index_calender" %>
 	$(".index_calender").html("<%= escape_javascript(render 'index_calender') %>")
+<% when "index_category" %>
+	$(".index_category").html("<%= escape_javascript(render 'index_category') %>")
 <% end %>

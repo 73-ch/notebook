@@ -48,7 +48,15 @@ class NotesController < ApplicationController
       @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
       @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
     when "index_calender"
+    when "index_category"
+      notes = Note.where(user_id: session[:user_id])
+      @categories = Category.where(user_id: session[:user_id])
+      @notes = {}
+      @categories.each do |c|
+        @notes[c.id] = JSON.parse(notes.where(category_id: c.id).to_json)
+      end
     end
+
   end
 
   def edit
