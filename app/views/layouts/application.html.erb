@@ -44,7 +44,8 @@
       <% if signed_in? %>
       <li><%= link_to 'category', "" %>
         <ul>
-          <li class="dropmenu_li"><%= link_to "create category", "category/new/0" %></li>
+          <li class="dropmenu_li"><%= link_to "create category", "/category/new/0" %></li>
+          <li class="dropmenu_li"><%= link_to "all category", "/categories" %></li>
         </ul>
       </li>
       <li><%= link_to "note" ,"#" %>

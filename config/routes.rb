@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get "/index_category" => "notes#index_category"
 
   get '/date/json' => 'notes#date_json'
-  get '/particle/json' => 'notes#particle_json'
 
 
   get '/category/new/:type' => 'categories#new'
