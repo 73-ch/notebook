@@ -9,6 +9,10 @@ $(document).ready(function() {
 	    center: "prev,next",
 	    right:  'month,agendaWeek,agendaDay',
     },
+    titleFormat: 'yyyy年 MM',
+    monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+    buttonText: {today: '今日', month: '月', week: '週', day: '日'},
     nowIndicator: false,
     editable: true,
     height: $(window).height(),
@@ -24,6 +28,21 @@ $(document).ready(function() {
     revert: true,
     revertDuration: 0
   });
+  // $('#delete_event').on("dragenter", function(e){
+  //   console.log('dragenter');
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // });
+  // $('#delete_event').on("dragover", function(e){
+  //   console.log('dragover');
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // });
+  // $('#delete_event').on("drop", function(e){
+  //   console.log('drop');
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // });
 });
 $('#product-modal').on("loaded.bs.modal", function(e){
   $('#calendar').fullCalendar({
@@ -36,6 +55,10 @@ $('#product-modal').on("loaded.bs.modal", function(e){
     nowIndicator: false,
     editable: true,
     height: $(window).height(),
+    titleFormat: 'yyyy年 MMMM',
+    monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+    buttonText: {today: '今日', month: '月', week: '週', day: '日'}
   })
 })
 </script>

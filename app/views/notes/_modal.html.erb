@@ -17,9 +17,9 @@
       <hr>
       <%= f.text_area :content, {:id => "textarea", :class => "textarea form_parts", :placeholder => "content"} %>
       <br>
-      <div id="importance_range">
+     <!--  <div id="importance_range">
         <%= f.range_field :importance, :class => "range form_parts", :id => "range" %>
-      </div>
+      </div> -->
       <% if @type == "plan" %>
         <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @date %>
         <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time", :value => @date %>
@@ -48,26 +48,26 @@
 </div>
 <script type="text/javascript">
 (function(){
-  var importance_range = document.getElementById("importance_range");
-  var range_width = 484.391,
-      height = 30,
-      width = range_width / 100,
-      draw = SVG('importance_range').size(range_width, height),
-      range = document.getElementById('range'),
-      range_click = false;
+  // var importance_range = document.getElementById("importance_range");
+  // var range_width = 484.391,
+  //     height = 30,
+  //     width = range_width / 100,
+  //     draw = SVG('importance_range').size(range_width, height),
+  //     range = document.getElementById('range'),
+  //     range_click = false;
 
-  importance_range.height = height;
-  range.addEventListener('input', rangeChanged, false);
-  <% @notes.each do |note| %>
-    drawLine(<%= note.importance %>, "<%= note.title %>", "#000");
-  <% end %>
-  var now_move_width = range_width * 0.5 - width / 2;
-  var now_importance = 50;
-  var now_rect = draw.rect(width, height).move(now_move_width, 0).fill("#ff0000");
-  function drawLine(importance, name, col){
-    var move_width = range_width * importance / 100;
-    rect = draw.rect(width, height).move(move_width - width / 2, 0).fill(col);
-  }
+  // importance_range.height = height;
+  // range.addEventListener('input', rangeChanged, false);
+  // <% @notes.each do |note| %>
+  //   drawLine(<%= note.importance %>, "<%= note.title %>", "#000");
+  // <% end %>
+  // var now_move_width = range_width * 0.5 - width / 2;
+  // var now_importance = 50;
+  // var now_rect = draw.rect(width, height).move(now_move_width, 0).fill("#ff0000");
+  // function drawLine(importance, name, col){
+  //   var move_width = range_width * importance / 100;
+  //   rect = draw.rect(width, height).move(move_width - width / 2, 0).fill(col);
+  // }
 
 
   function rangeChanged(){
