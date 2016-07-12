@@ -9,17 +9,23 @@ Rails.application.routes.draw do
 
   root :to => 'home#top'
 
-  resources :notes
   get '/new/:type/:source' => 'notes#new'
   post "/notes" => "notes#create"
   get "show_modal" => "notes#new", defaults: {format: "js"}
-  delete "/note_destroy" => 'notes#destroy'
+  delete "/notes/:id/:source" => 'notes#destroy'
+  get "/notes/:id" => "notes#show"
+  patch "/notes/:id" => "notes#update"
+  put "/notes/:id" => "notes#update"
+  get "notes/:id/edit" => "notes#edit"
+
+  # resources :notes
 
   get '/index_manager' => 'notes#index_manager'
   get '/index_all' => 'notes#index_all'
   get "/index_calender" => "notes#index_calender"
   get "/index_day" => "notes#index_day"
   get "/index_category" => "notes#index_category"
+  get "/memos" => "notes#index_memos"
 
   get '/date/json' => 'notes#date_json'
 

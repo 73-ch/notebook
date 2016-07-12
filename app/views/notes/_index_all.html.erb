@@ -1,0 +1,10 @@
+<% @notes.each do |note| %>
+	<%= link_to "notes/#{note.id}" do %>
+		<div class="col-md-4 note_box">
+			<div class="note">
+				<h3><%= note.title %></h3>
+				<%= link_to "削除", "notes/#{note.id}/#{@source}", :method => :delete, remote: true %>
+			</div>
+		</div>
+	<% end %>
+<% end %>

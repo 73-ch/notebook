@@ -1,9 +1,5 @@
 <h2>ノート一覧</h2>
 <hr>
-<% @notes.each do |note| %>
-	<%= link_to(note) do %>
-		<h3><%= note.title %></h3>
-		<%= link_to "削除", note_destroy_path(id: note.id), :method => :delete %>
-	<% end %>
-	<hr>
-<% end %>
+<div id="index_all" class="all_notes">
+	<%= render "index_all" %>
+</div>

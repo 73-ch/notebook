@@ -20,5 +20,5 @@
 <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <%= link_to "一覧" , "/index" %>
 <%= link_to "追加登録", "/new" %>
-<%= link_to "編集", [:edit, @note] %>
-<%= link_to '削除', note_path(id: @note.id) ,:method => :delete %>
+<%= link_to "編集", "/notes/#{@note.id}/edit" %>
+<%= link_to '削除', "/notes/#{@note.id}/@source" ,:method => :delete %>

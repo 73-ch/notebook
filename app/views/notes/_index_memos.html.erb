@@ -1,0 +1,8 @@
+<% @notes.each do |note| %>
+		<div class="note_box col-md-3">
+			<div class="note">
+				<h1><%= note.title %></h1>
+				<p><%= note.content %></p>
+			</div>
+		</div>
+	<% end %>

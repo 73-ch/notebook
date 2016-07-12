@@ -82,10 +82,11 @@ hr{
     color-stop(0.96, rgba(0, 0, 0, 0)),
     color-stop(0.98, rgba(0, 0, 0, 0.5)),
     to(rgba(0, 0, 0, 0))
-    );
+  );
   background-size: auto 1.5em;
   overflow: visible;
   margin: 10px 0;
+  height: 100px;
 }
 
 .range{

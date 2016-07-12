@@ -26,21 +26,8 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to "/index_all"
-  end
+    @source = params[:source]
 
-  def create
-    @note = Note.create(note_params)
-    @note.start_time = params[:note][:start_time]
-    @note.end_time = params[:note][:end_time]
-    if @note.note_type == 1
-      @note.end_time += 1.days - 1.seconds
-    end
-    logger.info(@note.note_processes)
-    @note.save
-
-
-    @source = params[:note][:source]
     case @source
     when "index_day"
       datetime = DateTime.now
@@ -55,6 +42,44 @@ class NotesController < ApplicationController
       @categories.each do |c|
         @notes[c.id] = JSON.parse(notes.where(category_id: c.id).to_json)
       end
+    when "memos"
+      @notes = Note.where(user_id: session[:user_id], done: false, note_type: 2)
+    when "index_all"
+      @notes = Note.where(user_id: session[:user_id])
+    end
+  end
+
+  def create
+    @note = Note.create(note_params)
+    @note.start_time = params[:note][:start_time]
+    @note.end_time = params[:note][:end_time]
+    if @note.note_type == 1
+      @note.end_time += 1.days - 1.seconds
+    end
+    logger.info(@note.note_processes)
+    @note.save
+
+
+    @source = params[:note][:source]
+    logger.info(@source)
+    case @source
+    when "index_day"
+      datetime = DateTime.now
+      @plans = Note.where(user_id: session[:user_id], done: false, note_type: 0).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+      @schedules = Note.where(user_id: session[:user_id], done: false, note_type: 1).where("start_time <= ? AND end_time >= ?", datetime, datetime)
+      @memos = Note.where(user_id:session[:user_id], done: false, note_type: 2)
+    when "index_calender"
+    when "index_category"
+      notes = Note.where(user_id: session[:user_id])
+      @categories = Category.where(user_id: session[:user_id])
+      @notes = {}
+      @categories.each do |c|
+        @notes[c.id] = JSON.parse(notes.where(category_id: c.id).to_json)
+      end
+    when "memos"
+      @notes = Note.where(user_id: session[:user_id], done: false, note_type: 2)
+    when "index_all"
+      @notes = Note.where(user_id: session[:user_id])
     end
 
   end
@@ -82,6 +107,10 @@ class NotesController < ApplicationController
 
   def index_calender
     @source = "index_calender"
+  end
+
+  def index_memos
+    @notes = Note.where(user_id: session[:user_id], done: false, note_type: 2)
   end
 
   def index_day

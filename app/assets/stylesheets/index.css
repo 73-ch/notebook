@@ -20,3 +20,12 @@
 	height: 180px;
 	padding: 10px;
 }
+
+#index_all .note{
+	border: 1px solid #999999;
+	padding: 10px 5px;
+}
+
+#index_all .note h3{
+	margin: 0;
+}

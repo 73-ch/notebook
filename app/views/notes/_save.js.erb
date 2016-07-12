@@ -10,4 +10,8 @@ $("#product-modal").modal("hide")
 	$(".index_calender").html("<%= escape_javascript(render 'index_calender') %>")
 <% when "index_category" %>
 	$(".index_category").html("<%= escape_javascript(render 'index_category') %>")
+<% when "memos" %>
+	$("#memos").html("<%= escape_javascript(render 'index_memos') %>")
+<% when "index_all"%>
+	$(".all_notes").html("<%= escape_javascript(render 'index_all') %>")
 <% end %>
