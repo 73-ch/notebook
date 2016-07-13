@@ -13,34 +13,37 @@
       <%= f.hidden_field :source, :value => @source %>
 
       <!-- form content -->
-      <%= f.text_field :title, {:placeholder => "add #{@type}", :class => "title form_parts"} %>
-      <hr>
-      <%= f.text_area :content, {:id => "textarea", :class => "textarea form_parts", :placeholder => "content"} %>
-      <br>
-     <!--  <div id="importance_range">
-        <%= f.range_field :importance, :class => "range form_parts", :id => "range" %>
-      </div> -->
-      <% if @type == "plan" %>
-        <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @date %>
-        <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time", :value => @date %>
-      <% elsif @type == 'schedule' %>
-        <% if @date %>
-          <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time", :value => @date %>
-          <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time", :value => @date %>
-        <% else %>
-          <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "start_time", :placeholder => "start time" %>
-          <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :class => 'form-control datetimepicker form_parts', :id => "end_time", :placeholder => "end time" %>
+      <div id="time_area" >
+        <% if @type == "plan" %>
+          <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :id => "start_time", :placeholder => "start time", :value => @date %>~
+          <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD HH:mm' }, :id => "end_time", :placeholder => "end time", :value => @date %>
+        <% elsif @type == 'schedule' %>
+          <% if @date %>
+            <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :id => "start_time", :placeholder => "start time", :value => @date %>~
+            <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :id => "end_time", :placeholder => "end time", :value => @date %>
+          <% else %>
+            <%= f.text_field :start_time, data: { :date_format => 'YYYY-MM-DD' }, :id => "start_time", :placeholder => "start time" %>
+            <%= f.text_field :end_time, data: { :date_format => 'YYYY-MM-DD' }, :id => "end_time", :placeholder => "end time" %>
+          <% end %>
         <% end %>
+      </div>
+      <%= f.text_field :title, {:placeholder => "add #{@type}", :class => "title form_parts"} %>
+      <div class="content_box">
+        <%= f.text_area :content, {:id => "textarea", :class => "textarea form_parts"} %>
+      </div>
+      <% if false %>
+        <!--  <div id="importance_range">
+          <%= f.range_field :importance, :class => "range form_parts", :id => "range" %>
+        </div> -->
       <% end %>
-      <br>
-      <%= f.fields_for :note_processes do |p_f| %>
-        <%= render "note_process_fields", f: p_f %>
-      <% end %>
-      <br>
-      <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "category"}, {:id => "category_select", :class => "category_select form_parts"} %>
-      <br>
-      <input type="reset" value="reset" class="form_button">
-      <%= f.submit "add", :class => "form_button add_button" %>
+      <div class="form_bottom">
+        <%= f.fields_for :note_processes, :class => "process" do |p_f| %>
+          <%= render "note_process_fields", f: p_f %>
+        <% end %>
+        <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => "no category"}, {:id => "category_select", :class => "category_select"} %>
+        <%= f.submit "add", :class => "form_button add_button" %>
+        <!-- <input type="reset" value="reset" class="form_button"> -->
+      </div>
     <% end %>
     </div>
     </div>

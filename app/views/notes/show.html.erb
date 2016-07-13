@@ -6,7 +6,7 @@
 	<h1>メモ</h1>
 <% end %>
 <h1><%= @note.title %></h1>
-<h3><%= @note.content %></h3>
+<h3><%= simple_format(@note.content) %></h3>
 <h3><%= @note.importance %></h3>
 <h3><%= @note.start_time %></h3>
 <h3><%= @note.end_time %></h3>
@@ -18,7 +18,5 @@
 <%= link_to "-追加-", "/note/process/new/#{@note.id}", remote: true %>
 <br>
 <div id="product-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<%= link_to "一覧" , "/index" %>
-<%= link_to "追加登録", "/new" %>
 <%= link_to "編集", "/notes/#{@note.id}/edit" %>
 <%= link_to '削除', "/notes/#{@note.id}/@source" ,:method => :delete %>

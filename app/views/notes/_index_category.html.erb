@@ -7,14 +7,14 @@
 			<% @notes[c.id].each do |note| %>
 				<div class="category_note col-md-2">
 					<h5><%= link_to note["title"], "notes/#{note['id']}" %></h5><br/>
-					<p><%= note["content"] %></p><br/>
+					<p><%= simple_format(note["content"]) %></p><br/>
 				</div>
 			<% end %>
 		<% else %>
 			<% @notes[c.id].first(5).each do |note| %>
 				<div class="category_note col-md-2">
 					<h5><%= link_to note["title"], "notes/#{note['id']}" %></h5><br/>
-					<p><%= note["content"] %></p><br/>
+					<p><%= simple_format(note["content"]) %></p><br/>
 				</div>
 			<% end %>
 			<div class="see_more col-md-1">

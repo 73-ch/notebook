@@ -2,7 +2,7 @@
 		<div class="note_box col-md-3">
 			<div class="note">
 				<h1><%= note.title %></h1>
-				<p><%= note.content %></p>
+				<p><%= simple_format(note.content) %></p>
 			</div>
 		</div>
 	<% end %>

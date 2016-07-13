@@ -27,24 +27,21 @@ input, button, textarea, select {
 .form{
 	width: 100%;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 10px;
 	background-color: #FFF6cc;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
+	font-size: 1.5em;
+	box-sizing:border-box;
+	color: rgba(0, 0, 0, 0.6);
 }
 
 .form_parts{
 	width: 100%;
-	margin: 10px 0;
 }
 
-.form_button{
-	width: 50%;
-	margin: 10px 0;
-	color: #999;
-  font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	font-size: 2em;
+.form_bottom{
+	padding-top: 5px;
 }
 
 .type{
@@ -57,24 +54,19 @@ input, button, textarea, select {
 
 .title{
 	max-width: 100%;
-	overflow-x: visible;
-	outline: none;
-	border: none;
-	background: none;
-	font-size: 30px;
-	appearance: none;
+	border-top: solid 1px rgba(0, 0, 0, 0.5);
+	border-bottom: solid 1px rgba(0, 0, 0, 0.5);
+	font-size: 2em;
 }
 
-hr{
-	margin: 10px 0;
-	border-color: #999;
-	border-width: 1px;
+.content_box{
+	padding: 0 5px;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.5);
 }
 
 .textarea{
-	box-sizing:border-box;
 	width: 100%;
-	resize: none;
+	resize: vertical;
 	background: #FFF6cc -webkit-gradient(
     linear,
     left top, left bottom,
@@ -85,30 +77,8 @@ hr{
   );
   background-size: auto 1.5em;
   overflow: visible;
-  margin: 10px 0;
-  height: 100px;
-}
-
-.range{
-	box-sizing:border-box;
-	outline: none;
-	position: absolute;
-	opacity: 0;
-	z-index: 100;
-	width: 100%;
-	height: 100%;
-	/*appearance: none;*/
-}
-
-#importance_range{
-	position: relative;
-	box-sizing:border-box;
-	width: 100%;
-	z-index: 10;
-	left: 0;
-	padding: 0;
-	height: 30px;
-	margin: 10px 0;
+  margin-top: 5px;
+  height: 50vh;
 }
 
 #start_time, #end_time{
@@ -117,49 +87,32 @@ hr{
 	border: none;
 	outline: none;
 	padding: 0;
-	font-size: 30px;
+	width:7em;
+	display: inline-block;
+}
+#time_area{
+	text-align: right;
+
 }
 
-.add_button{
-	float: right;
+fieldset, .category_select, .form_button{
+	width: 32%;
+	display: inline-block;
+	border-right: solid 1px rgba(0, 0, 0, 0.5);
+	text-align: left;
+}
+.form_bottom input:last-child{
+	border-right: none;
 }
 
-.title::-webkit-input-placeholder, .datetimepicker::-webkit-input-placeholder, .process::-webkit-input-placeholder{
+.process{
+	width: 100%;
+}
+
+.title::-webkit-input-placeholder, .datetimepicker::-webkit-input-placeholder{
   color: #999;
-  font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
   background-color: #FFF6cc;
-  font-size: 1em;
-  padding: 0;
+  padding: 5px;
 	height: 100%;
 }
 
-.textarea::-webkit-input-placeholder{
-	font-size: 2.3em;
-	color: #999;
-  font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-  background-color: #FFF6cc;
-  padding: 0;
-	height: 100%;
-}
-
-.category_select{
-	color: #999;
-  font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	font-size: 2em;
-}
-
-.routine{
-	width: 14%;
-	height: 20px;
-	background-color: #fff;
-}
-
-
-/*.range::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}*/
