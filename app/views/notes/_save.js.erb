@@ -14,4 +14,6 @@ $("#product-modal").modal("hide")
 	$("#memos").html("<%= escape_javascript(render 'index_memos') %>")
 <% when "index_all"%>
 	$(".all_notes").html("<%= escape_javascript(render 'index_all') %>")
+<% when "index" %>
+	$("#index").html("<%= escape_javascript(render 'index') %>")
 <% end %>

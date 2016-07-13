@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   put "/notes/:id" => "notes#update"
   get "notes/:id/edit" => "notes#edit"
 
-  # resources :notes
-
+  get 'index' => 'notes#index'
   get '/index_manager' => 'notes#index_manager'
   get '/index_all' => 'notes#index_all'
   get "/index_calender" => "notes#index_calender"

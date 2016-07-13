@@ -9,7 +9,7 @@
 			<ul>
 				<% @schedules.each do |schedule| %>
 					<br>
-					<li><%= link_to schedule.title, note_path(schedule) %></li>
+					<li><%= link_to schedule.title, "/notes/#{schedule.id}" %></li>
 				<% end %>
 			</ul>
 		<% end %>
@@ -24,7 +24,7 @@
 			<ul>
 				<% @plans.each do |plan| %>
 					<br>
-					<li><%= link_to plan.title, note_path(plan) %></li>
+					<li><%= link_to plan.title, "/notes/#{plan.id}" %></li>
 				<% end %>
 			</ul>
 		<% end %>
@@ -39,7 +39,7 @@
 			<ul>
 				<% @memos.each do |memo| %>
 					<br>
-					<li><%= link_to memo.title, note_path(memo) %></li>
+					<li><%= link_to memo.title, "/notes/#{memo.id}" %></li>
 				<% end %>
 			</ul>
 		<% end %>

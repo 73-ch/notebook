@@ -1,15 +1,16 @@
+<% if current_user?(@user) %>
 <h1>profile</h1>
 <div id="user">
     <h2>name</h2>
     <h4><%= @user.name %></h4>
     <h2>Email</h2>
     <h3><%= @user.email %></h3>
-    <h2>notes</h2>
+    <h2>これまでに投稿したノート</h2>
     <h4><%= @notes.count %> notes</h4>
-    <h4><%= link_to 'ノート一覧', index_all_path%></h4>
+    <h4><%= link_to 'ノート一覧', index_path%></h4>
 </div>
-
-<% if current_user?(@user) %>
 <p><%= link_to '編集', edit_user_path %></p>
 <p><%= link_to '削除', destroy_path(id: @user.id) ,:method => :delete %></p>
+<% else %>
+	<h1>あなたはこのユーザーではありません</h1>
 <% end %>

@@ -29,3 +29,11 @@
 #index_all .note h3{
 	margin: 0;
 }
+
+#index_wrapper h2{
+	display: inline-block;
+
+}
+#index_wrapper .note_count{
+	float: right;
+}

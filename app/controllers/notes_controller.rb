@@ -79,6 +79,8 @@ class NotesController < ApplicationController
     when "memos"
       @notes = Note.where(user_id: session[:user_id], done: false, note_type: 2)
     when "index_all"
+      @notes = Note.where(user_id: session[:user_id], done: false)
+    when "index"
       @notes = Note.where(user_id: session[:user_id])
     end
 
@@ -101,8 +103,12 @@ class NotesController < ApplicationController
     @note_processes = NoteProcess.where(note_id: params[:id])
   end
 
-  def index_all
+  def index
     @notes = Note.where(user_id: session[:user_id])
+  end
+
+  def index_all
+    @notes = Note.where(user_id: session[:user_id], done: false)
   end
 
   def index_calender
